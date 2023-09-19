@@ -1,8 +1,9 @@
-<link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/bootstrap.min.css" crossorigin="anonymous">
 <div class="container">
     <div class="box">
     <form  method="POST">
     <center><h1>Login</h1></center>
+    <h2>Login dos administradores</h2>
         <input type="hidden" name="acao" value="conta">  
         <div class="mb-3"> 
             
@@ -23,7 +24,7 @@
 
 <style>
         body{
-
+                
 
         }
      .container{
@@ -39,13 +40,13 @@
                 justify-content: center;
                 text-align: left;
                 align-items: center;
-                width: 420px;
+                width: 320px;
                 height: 420px;
                 padding: 50px;
                 border-radius: 60px;
                 text-align: center;
                 background-color: white;
-                
+                box-shadow: 0px 1px 14px grey;
                 
 
                 
@@ -53,6 +54,12 @@
         .box h1{
                 margin-bottom: 20px;
 
+        }
+        .box h2{
+                margin-bottom: 20px;
+                color: gray;
+                font-size: 15px;
+                text-align: center;
         }
         .mb-3 input{
             
@@ -71,7 +78,7 @@
         }
         .mb-3 button:hover{
             
-            background-color: rgb(217, 145, 0);
+            background-color: #192f69;
         }
         
 

@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -34,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             } else {
 
-                $erro = "Senha incorreta. Por favor, tente novamente.";
+                $erro = "<div id='erro'>Senha incorreta.<br>Por favor, tente novamente.</div>";
             }
         } else {
 
@@ -69,6 +70,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-attachment: fixed;
             background-repeat: no-repeat;
             background-size: 100% 100%;
+        }
+        #erro{
+            position: absolute;
+            top: 300px;
+            color: red;
+            text-align: center;
         }
 
         .container {

@@ -26,12 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->fetch()) {
 
-            if (password_verify($senha, $senha_hash)) {
+            if ($senha === $senha_hash) {
 
                 $_SESSION["user_id"] = $aluno_id;
+                echo '<script>window.location.href = "../general/Index.php";</script>';
 
-                header("Location: welcome.php");
-                exit();
             } else {
 
                 $erro = "Senha incorreta. Por favor, tente novamente.";

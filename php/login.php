@@ -26,9 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->fetch()) {
 
-            if (password_verify($senha, $senha_hash)) {
+            if ($senha === $senha_hash) {
 
                 echo '<script>console.log("Login bem-sucedido. Bem-vindo, Aluno!")</script>';
+                header("Location: ../Global/general/Index.html");
+                exit;
+                
 
             } else {
                 echo '<script>console.log("Senha incorreta. Por favor, tente novamente.")</script>';//CONSOLE NÃO MUDA AKI IDIOTA

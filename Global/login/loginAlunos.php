@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -27,15 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->fetch()) {
 
-            if (password_verify($senha, $senha_hash)) {
+            if ($senha === $senha_hash) {
 
                 $_SESSION["user_id"] = $aluno_id;
+                echo '<script>window.location.href = "../general/Index.php";</script>';
 
-                header("Location: welcome.php");
-                exit();
             } else {
 
-                $erro = "<div id='erro'>Senha incorreta.<br>Por favor, tente novamente.</div>";
+                $erro = "Senha incorreta. Por favor, tente novamente.";
             }
         } else {
 
@@ -70,12 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-attachment: fixed;
             background-repeat: no-repeat;
             background-size: 100% 100%;
-        }
-        #erro{
-            position: absolute;
-            top: 300px;
-            color: red;
-            text-align: center;
         }
 
         .container {

@@ -2,12 +2,11 @@
 $login = $_POST['nome_us'];
 $entrar = $_POST['entrar'];
 $senha = $_POST['senha_us'];
-$username = "localhost";
-$password = "root";
+$username = "root";
+$password = "";
 $dbname = "expotec_db";
 $servername = "localhost";
 
-include_once "./conexao.php";
 
 if (isset($entrar)) {
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -26,7 +25,7 @@ if (isset($entrar)) {
 
     if ($result->num_rows <= 0) {
         echo "<script language='javascript' type='text/javascript'>
-            alert('Erro ao tentar realizar o login!');window.location.href='../Global/login/loginAlunos.php';</script>";
+            alert('Erro ao tentar realizar o login!');window.location.href='../Global/login/loginProfessores.php';</script>";
         die();
     } else {
         setcookie("login", $login);

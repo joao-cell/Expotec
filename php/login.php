@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
 
             echo "Usuário não encontrado. Por favor, verifique o nome de usuário.";
-            echo '<script>console.log("Usuário não encontrado. Por favor, verifique o nome de usuário.")</script>';//CONSOLE NÃO MUDA AKI JOÃO BURRO
+            echo '<script>console.log("Usuário não encontrado. Por favor, verifique o nome de usuário.")</script>';//CONSOLE NÃO MUDA AKI JOÃO BURRO ????? nem mexi nessa porra doente
         }
 
         $stmt->close();

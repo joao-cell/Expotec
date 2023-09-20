@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($senha === $senha_hash) {
 
                 $_SESSION["user_id"] = $aluno_id;
-                echo '<script>window.location.href = "../general/Index.php";</script>';
+                echo '<script>window.location.href = "../general/Index.php";</script>'; 
 
             } else {
 

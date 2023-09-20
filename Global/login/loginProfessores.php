@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             } else {
 
-                $erro = "Senha incorreta. Por favor, tente novamente.";
+                $erro = "<div id='erro'>Senha incorreta.<br>Por favor, tente novamente.</div>";
             }
         } else {
 

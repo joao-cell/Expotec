@@ -15,6 +15,12 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
+        #erro{
+            position: absolute;
+            top: 300px;
+            color: red;
+            text-align: center;
+        }
 
         .container {
             display: flex;

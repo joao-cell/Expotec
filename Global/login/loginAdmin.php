@@ -1,57 +1,3 @@
-<?php
-session_start();
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    include_once "../../php/conexao.php";
-
-
-    $user = $_POST["nome_us"];
-    $senha = $_POST["senha_us"];
-
-
-    $query = "SELECT id, senha FROM alunos WHERE user = ?";
-    
-
-    $stmt = $mysqli->prepare($query);
-
-    if ($stmt) {
-
-        $stmt->bind_param("s", $user);
-        $stmt->execute();
-
-
-        $stmt->bind_result($aluno_id, $senha_hash);
-
-        if ($stmt->fetch()) {
-
-            if ($senha === $senha_hash) {
-
-                $_SESSION["user_id"] = $aluno_id;
-                echo '<script>window.location.href = "../general/Index.php";</script>';
-
-            } else {
-
-                $erro = "Senha incorreta. Por favor, tente novamente.";
-            }
-        } else {
-
-            $erro = "Usuário não encontrado. Por favor, verifique o nome de usuário.";
-        }
-
-
-        $stmt->close();
-    } else {
-
-        $erro = "Erro na preparação da consulta: " . $mysqli->error;
-    }
-
-
-    $mysqli->close();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -135,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <div class="box">
-            <form method="POST" action="login.php">
+            <form method="POST" action="../../php/loginAdmin.php">
                 <center><h1>Login</h1></center>
                 <h2>Faça login para acessar</h2>
                 <input type="hidden" name="acao" value="conta">
@@ -147,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <center>
                     <div class="mb-3">
-                        <button type="submit" class="btn">Entrar</button>
+                        <button type="submit" name="entrar" class="btn">Entrar</button>
                     </div>
                 </center>
             </form>

@@ -24,7 +24,7 @@ if (isset($entrar)) {
 
     if ($result->num_rows <= 0) {
         echo "<script language='javascript' type='text/javascript'>
-            alert('Erro ao tentar realizar o login!');window.location.href='../Global/login/loginAdmin.php';</script>";
+            alert('Usuario ou senha Incorreto!');window.location.href='../Global/login/loginAdmin.php';</script>";
         die();
     } else {
         session_start();

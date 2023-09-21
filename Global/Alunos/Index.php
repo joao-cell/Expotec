@@ -70,7 +70,7 @@ if (empty($_SESSION['user'])) {
     <div id="texto">
       <center>
       <h1>Bem Vindo ao FortecHub <?php echo $_SESSION['user'];?></h1>
-        <h2>Acesse suas notas, seus horários e veja seus avisos!</h2>
+        <h2>Acesse suas notas, seus horários e veja seus avisos! </h2>
       </center>
     </div>
 

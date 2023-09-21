@@ -29,7 +29,13 @@ if (isset($entrar)) {
         die();
     } else {
         session_start();
-        $_SESSION['user'] = $login;
+        $sql = "SELECT id FROM professores WHERE user = '$login'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $_SESSION['id'] = $row['id'];
+        }
+            $_SESSION['user'] = $login;
         header("Location: ../Global/Professores/Index.php");
     }
 

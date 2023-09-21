@@ -14,7 +14,6 @@ if (isset($entrar)) {
         die("Falha na conexão: " . $conn->connect_error);
     }
 
-    // Evite a injeção de SQL usando declarações preparadas
     $stmt = $conn->prepare("SELECT * FROM administradores WHERE user = ? AND senha = ?");
     $stmt->bind_param("ss", $login, $senha);
 
@@ -28,7 +27,13 @@ if (isset($entrar)) {
         die();
     } else {
         session_start();
-        $_SESSION['user'] = $login;
+        $sql = "SELECT id FROM administradores WHERE user = '$login'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $_SESSION['id'] = $row['id'];
+        }
+            $_SESSION['user'] = $login;
         header("Location: ../Global/Admin/Index.php");
     }
 

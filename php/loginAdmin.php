@@ -1,5 +1,5 @@
 <?php
-$login = $_POST['nome_us'].strtoupper();
+$login = strtoupper($_POST['nome_us']);
 $entrar = $_POST['entrar'];
 $senha = $_POST['senha_us'];
 $username = "root";

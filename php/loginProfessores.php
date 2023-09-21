@@ -1,5 +1,5 @@
 <?php
-$login = $_POST['nome_us'];
+$login = strtoupper($_POST['nome_us']);
 $entrar = $_POST['entrar'];
 $senha = $_POST['senha_us'];
 $username = "root";
@@ -28,8 +28,9 @@ if (isset($entrar)) {
             alert('Erro ao tentar realizar o login!');window.location.href='../Global/login/loginProfessores.php';</script>";
         die();
     } else {
-        setcookie("login", $login);
-        header("Location: ../Global/Professores/Index.html");
+        session_start();
+        $_SESSION['user'] = $login;
+        header("Location: ../Global/Professores/Index.php");
     }
 
     $stmt->close();

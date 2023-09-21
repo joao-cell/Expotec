@@ -1,3 +1,12 @@
+<?php
+session_set_cookie_params(0);
+session_start();
+if (empty($_SESSION['user'])) {
+    header('Location: ../login/loginAlunos.php'); 
+    exit(); 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -59,7 +68,7 @@
     </div>
     <div id="texto">
       <center>
-      <h1>Bem Vindo ao FortecHub <?php session_start(); echo $_SESSION['user'];?></h1>
+      <h1>Bem Vindo ao FortecHub <?php echo $_SESSION['user'];?></h1>
         <h2>Acesse suas notas, seus horários e veja seus avisos!</h2>
       </center>
     </div>

@@ -43,12 +43,12 @@ if (empty($_SESSION['user'])) {
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../alunos/notas.php"
+            <a class="nav-link" style="color: white" href="../professores/notas.php"
               >Notas</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../alunos/avisos.php"
+            <a class="nav-link" style="color: white" href="../professores/avisos.php"
               >Avisos</a
             >
           </li>

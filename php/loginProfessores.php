@@ -1,5 +1,5 @@
 <?php
-$login = $_POST['nome_us'];
+$login = strtoupper($_POST['nome_us']);
 $entrar = $_POST['entrar'];
 $senha = $_POST['senha_us'];
 $username = "root";
@@ -25,11 +25,18 @@ if (isset($entrar)) {
 
     if ($result->num_rows <= 0) {
         echo "<script language='javascript' type='text/javascript'>
-            alert('Erro ao tentar realizar o login!');window.location.href='../Global/login/loginProfessores.php';</script>";
+        alert('Usuario ou senha Incorreto!');window.location.href='../Global/login/loginProfessores.php';</script>";
         die();
     } else {
-        setcookie("login", $login);
-        header("Location: ../Global/Professores/Index.html");
+        session_start();
+        $sql = "SELECT id FROM professores WHERE user = '$login'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $_SESSION['id'] = $row['id'];
+        }
+            $_SESSION['user'] = $login;
+        header("Location: ../Global/Professores/Index.php");
     }
 
     $stmt->close();

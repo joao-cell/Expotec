@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Set-2023 às 21:41
--- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.2.4
+-- Tempo de geração: 22-Set-2023 às 18:10
+-- Versão do servidor: 10.4.20-MariaDB
+-- versão do PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `administradores` (
   `id` int(11) NOT NULL,
   `user` varchar(120) NOT NULL,
   `senha` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `administradores`
@@ -49,15 +49,22 @@ INSERT INTO `administradores` (`id`, `user`, `senha`) VALUES
 CREATE TABLE `alunos` (
   `id` int(11) NOT NULL,
   `user` varchar(120) DEFAULT NULL,
-  `senha` varchar(120) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `senha` varchar(120) DEFAULT NULL,
+  `turma` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `alunos`
 --
 
-INSERT INTO `alunos` (`id`, `user`, `senha`) VALUES
-(6, 'test', '123');
+INSERT INTO `alunos` (`id`, `user`, `senha`, `turma`) VALUES
+(6, 'test', '123', 'tin3a'),
+(8, 'ore', '123', 'tam2'),
+(9, 'vasco', '123', 'tin1a'),
+(10, 'leandro', '123', 'tme1b'),
+(11, 'gabriel', '123', 'tin2b'),
+(12, 'eduardo', '123', 'tin3a'),
+(13, 'bruno teles de lira', '123', 'tin3a');
 
 -- --------------------------------------------------------
 
@@ -69,7 +76,7 @@ CREATE TABLE `avisos` (
   `id` int(11) NOT NULL,
   `aviso` varchar(255) NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -80,7 +87,7 @@ CREATE TABLE `avisos` (
 CREATE TABLE `bimestres` (
   `id` int(11) NOT NULL,
   `numero` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `bimestres`
@@ -101,7 +108,7 @@ INSERT INTO `bimestres` (`id`, `numero`) VALUES
 CREATE TABLE `materias` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `materias`
@@ -133,7 +140,7 @@ CREATE TABLE `notas` (
   `materias_id` int(11) DEFAULT NULL,
   `bimestres_id` int(11) DEFAULT NULL,
   `nota` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -145,7 +152,7 @@ CREATE TABLE `professores` (
   `id` int(11) NOT NULL,
   `user` varchar(120) NOT NULL,
   `senha` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `professores`
@@ -216,7 +223,7 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de tabela `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `avisos`

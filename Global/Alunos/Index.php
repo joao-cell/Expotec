@@ -37,7 +37,7 @@ if (empty($_SESSION['user'])) {
       <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="index.html"
+            <a class="nav-link" style="color: white" href="index.php"
               >Inicio</a
             >
           </li>

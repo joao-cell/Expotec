@@ -19,7 +19,7 @@
   <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link"  style="color: white" href="../general/index.html">Inicio</a>
+        <a class="nav-link"  style="color: white" href="../alunos/index.php">Inicio</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" style="color: white" href="../alunos/notas.php">Notas</a>

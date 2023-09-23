@@ -19,16 +19,16 @@
   <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link"  style="color: white" href="index.html">Inicio</a>
+        <a class="nav-link"  style="color: white" href="../admin/index.php">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style="color: white" href="../alunos/notas.php">Notas</a>
+        <a class="nav-link" style="color: white" href="../admin/notas.php">Notas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  style="color: white" href="../alunos/avisos.php">Avisos</a>
+        <a class="nav-link"  style="color: white" href="../admin/avisos.php">Avisos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  style="color: white" href="../alunos/horarios.php">Horários</a>
+        <a class="nav-link"  style="color: white" href="../admin/horarios.php">Horários</a>
       </li>
     </ul>
   </div>
@@ -36,9 +36,13 @@
 <div class="conteiner">
     <div class="row">
         <div class="col mt-5">
-            <input type="text" name="" id="">
+            
+            <h1>Titulo<br>  
+            <input type="text" name="" id=""><BR><br>
+            Descrição<br>
+            <input type="text" name="" id=""><br></h1>
+            <br>
             <button>Enviar Mensagem</button>
-            <input type=""
         </div>
     </div>
 </div>
@@ -56,9 +60,27 @@
                   background-repeat: no-repeat;
 
           }
+          .row{
+                  position: flex;
+                  left: 50%;
+          }
           .conteiner h1{
+                  text-align: left;
+                  font-size: 28px;
                   
           }
+          
+          .conteiner{
+
+                  position: absolute;
+                  left: 20%;
+                  top: 20%;
+                  border-style: solid;
+                  padding: 20px;
+                  border-radius: 9px;
+                  width: 600px;
+                  
+                }
           nav a:hover{
 
                 background-color: #324F9A!important;

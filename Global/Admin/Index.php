@@ -37,17 +37,17 @@ if (empty($_SESSION['user'])) {
       <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="index.html"
+            <a class="nav-link" style="color: white" href="index.php"
               >Inicio</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../alunos/notas.php"
+            <a class="nav-link" style="color: white" href="../Admin/notas.php"
               >Notas</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../alunos/avisos.php"
+            <a class="nav-link" style="color: white" href="../Admin/avisos.html"
               >Avisos</a
             >
           </li>
@@ -55,7 +55,7 @@ if (empty($_SESSION['user'])) {
             <a
               class="nav-link"
               style="color: white"
-              href="../alunos/horarios.php"
+              href="../Admin/horarios.php"
               >Horários</a
             >
           </li>

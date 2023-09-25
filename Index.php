@@ -11,5 +11,8 @@
       <li><a href="./Global/login/loginAlunos.php">Alunos</a></li>
       <li><a href="./Global/login/loginAdmin.php">Coordenação</a></li>
     </ul>
+    <?php
+    session_destroy();
+    ?>
   </body>
-</html>
+</html

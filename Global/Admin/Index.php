@@ -6,6 +6,12 @@ if (empty($_SESSION['user'])) {
     header('Location: ../login/loginAdmin.php'); 
     exit(); 
 }
+
+if (isset($_POST['sair'])) {
+  session_destroy();
+  header('Location: ../../logout.html'); 
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +74,9 @@ if (empty($_SESSION['user'])) {
           </li>
         </ul>
       </div>
+      <form method="post">
+        <div><button type="submit" name="sair">Sair</button></div>
+    </form>
     </nav>
     <div class="conteiner">
       <div class="row">

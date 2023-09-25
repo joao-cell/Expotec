@@ -59,6 +59,13 @@ if (empty($_SESSION['user'])) {
               >Horários</a
             >
           </li>
+          <li class="nav-item">
+          <a 
+              class="nav-link"  
+              style="color: white" 
+              href="../admin/cadastro.php">
+              Cadastro</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -69,8 +76,10 @@ if (empty($_SESSION['user'])) {
     </div>
     <div id="texto">
       <center>
-      <h1>Bem Vindo ao FortecHub <?php echo $_SESSION['user'];?></h1>
-        <h2>Acesse suas notas, seus horários e veja seus avisos!</h2>
+      <h1>Bem vindo ao FortecHub <?php echo $_SESSION['user'];?></h1>
+        <h2>Olá administrador! fique a vontade para cadastrar usuários, alterar notas, enviar avisos e por ultimo
+          enviar ou alterar os horários.
+        </h2>
       </center>
     </div>
 

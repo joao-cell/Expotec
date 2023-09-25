@@ -83,7 +83,7 @@ if (empty($_SESSION['user'])) {
             
                 <label>Selecione a classe:<br>
                     <select name="turmass" id="turmass" onchange="this.form.submit()">
-                    <option value="0">None</option>
+                    <option value="0">none</option>
                         <?php 
                             $conn = mysqli_connect($hostname,$username,$password,$dbName);
                             if ($conn->connect_error) {
@@ -152,13 +152,12 @@ if (empty($_SESSION['user'])) {
         background-repeat: no-repeat;
       }
       .container {
-        
       
             
       }
       nav a:hover {
         background-color: #324f9a !important;
-        border-radius: 9px;
+        border-radius: 10px;
       }   
       #texto{
         position: absolute;

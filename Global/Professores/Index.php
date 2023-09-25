@@ -56,7 +56,7 @@ if (empty($_SESSION['user'])) {
             <a
               class="nav-link"
               style="color: white"
-              href="../alunos/horarios.php"
+              href="../professores/horarios.php"
               >Horários</a
             >
           </li>

@@ -12,6 +12,7 @@
       <li><a href="./Global/login/loginAdmin.php">Coordenação</a></li>
     </ul>
     <?php
+    session_start();
     session_destroy();
     ?>
   </body>

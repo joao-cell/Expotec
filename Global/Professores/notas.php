@@ -1,3 +1,81 @@
+<style>
+      html,
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow-x: hidden;
+        background-image: ;
+        background-size: 100% 100%;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+      .container {
+        
+      
+            
+      }
+      nav a:hover {
+        background-color: #324f9a !important;
+        border-radius: 9px;
+      }   
+      #texto{
+        position: absolute;
+        left: 40%;
+        
+      }
+      #texto h2 {
+        color: gray;
+        font-size: 18px;
+        
+      }
+      #texto2{
+        position: absolute;
+        left: 40%;
+        top: 100px;
+        padding-left: 10px;
+        border-style: none;
+        border-radius: 9px;
+        box-shadow: 0px 1px 4px grey;
+        width: 300px;
+        padding: 50px;
+
+      }
+      #texto2 select{
+        position: absolute;
+        left: 25%;
+        width: 150px;
+        color: gray;
+        border-radius: 10px;
+        border-style: none;
+        box-shadow: 0px 1px 4px grey;
+      } 
+      #texto2 input{
+        position: absolute;
+        left: 25%;
+        border-radius: 10px;
+        width: 150px;
+        border-style: none;
+        
+        box-shadow: 0px 1px 4px grey;
+      } 
+      .mb-3 button{
+
+            position: absolute;
+            left: 20%;
+            background-color: #244393;
+            color: white;
+            width: 60%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+
+      }
+      .mb-3 button:hover {
+            background-color: #192f69;
+        }
+    </style>
+
+
+
 <?php
 $hostname="localhost";
 $username = "root";
@@ -140,81 +218,7 @@ if (empty($_SESSION['user'])) {
     
     
     
-    <style>
-      html,
-      body {
-        width: 100vw;
-        height: 100vh;
-        overflow-x: hidden;
-        background-image: ;
-        background-size: 100% 100%;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-      }
-      .container {
-        
-      
-            
-      }
-      nav a:hover {
-        background-color: #324f9a !important;
-        border-radius: 9px;
-      }   
-      #texto{
-        position: absolute;
-        left: 40%;
-        
-      }
-      #texto h2 {
-        color: gray;
-        font-size: 18px;
-        
-      }
-      #texto2{
-        position: absolute;
-        left: 40%;
-        top: 100px;
-        padding-left: 10px;
-        border-style: none;
-        border-radius: 9px;
-        box-shadow: 0px 1px 4px grey;
-        width: 300px;
-        padding: 50px;
-
-      }
-      #texto2 select{
-        position: absolute;
-        left: 25%;
-        width: 150px;
-        color: gray;
-        border-radius: 10px;
-        border-style: none;
-        box-shadow: 0px 1px 4px grey;
-      } 
-      #texto2 input{
-        position: absolute;
-        left: 25%;
-        border-radius: 10px;
-        width: 150px;
-        border-style: none;
-        
-        box-shadow: 0px 1px 4px grey;
-      } 
-      .mb-3 button{
-
-            position: absolute;
-            left: 20%;
-            background-color: #244393;
-            color: white;
-            width: 60%;
-            border-radius: 10px;
-            margin-bottom: 20px;
-
-      }
-      .mb-3 button:hover {
-            background-color: #192f69;
-        }
-    </style>
+    
     <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
   </body>
 </html>

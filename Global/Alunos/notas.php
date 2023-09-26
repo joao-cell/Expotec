@@ -37,7 +37,7 @@
     <div class="row">
         <div class="col mt-5">
         <?php
-// Etapa 1: Conectar ao banco de dados
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -59,7 +59,7 @@ $sql = "SELECT materias.nome AS materia, notas.nota, bimestres.numero AS bimestr
 
 $result = $conn->query($sql);
 
-// Etapa 3: Imprimir os resultados em uma tabela HTML
+
 if ($result->num_rows > 0) {
     echo "<table border='1'>
             <tr>
@@ -79,7 +79,7 @@ if ($result->num_rows > 0) {
     echo "ESSE ALUNO AINDA NÃO POSSUI NOTAS EM NENHUMA MATERIA";
 }
 
-// Etapa 4: Fechar a conexão com o banco de dados
+
 $conn->close();
 ?>
         

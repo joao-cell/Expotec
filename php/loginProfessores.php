@@ -15,7 +15,7 @@ if (isset($entrar)) {
         die("Falha na conexão: " . $conn->connect_error);
     }
 
-    // Evite a injeção de SQL usando declarações preparadas
+    
     $stmt = $conn->prepare("SELECT * FROM professores WHERE user = ? AND senha = ?");
     $stmt->bind_param("ss", $login, $senha);
 

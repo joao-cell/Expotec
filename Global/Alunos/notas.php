@@ -15,7 +15,6 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393;">
- 
   <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -33,9 +32,56 @@
     </ul>
   </div>
 </nav>
+
 <div class="conteiner">
     <div class="row">
         <div class="col mt-5">
+        <?php
+// Etapa 1: Conectar ao banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "expotec_db";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+session_start();
+$aluno_id = $_SESSION['id'];
+$sql = "SELECT materias.nome AS materia, notas.nota, bimestres.numero AS bimestre
+        FROM notas
+        INNER JOIN materias ON notas.materias_id = materias.id
+        INNER JOIN bimestres ON notas.bimestres_id = bimestres.id
+        WHERE notas.alunos_id = $aluno_id";
+
+$result = $conn->query($sql);
+
+// Etapa 3: Imprimir os resultados em uma tabela HTML
+if ($result->num_rows > 0) {
+    echo "<table border='1'>
+            <tr>
+                <th>Matéria</th>
+                <th>Nota</th>
+                <th>Bimestre</th>
+            </tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>" . $row["materia"] . "</td>
+                <td>" . $row["nota"] . "</td>
+                <td>" . $row["bimestre"] . "</td>
+              </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "ESSE ALUNO AINDA NÃO POSSUI NOTAS EM NENHUMA MATERIA";
+}
+
+// Etapa 4: Fechar a conexão com o banco de dados
+$conn->close();
+?>
         
         </div>
     </div>

@@ -3,13 +3,13 @@
 session_set_cookie_params(0);
 session_start();
 if (empty($_SESSION['user'])) {
-    header('Location: ../login/loginProfessores.php'); 
+    header('Location: ../login/logout.html'); 
     exit(); 
 }
 
 if (isset($_POST['sair'])) {
   session_destroy();
-  header('Location: ../../logout.html'); 
+  header('Location: ../../index.php'); 
 }
 
 ?>

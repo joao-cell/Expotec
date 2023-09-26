@@ -75,7 +75,7 @@ if (isset($_POST['sair'])) {
         </ul>
       </div>
       <form method="post">
-        <div><button type="submit" name="sair">Sair</button></div>
+        <div id="logout"><button type="submit" name="sair" class="btn">Sair</button></div>
     </form>
     </nav>
     <div class="conteiner">
@@ -122,6 +122,17 @@ if (isset($_POST['sair'])) {
         color: gray;
         font-size: 18px;
       }
+      #logout :hover{
+            background-color:  #324f9a  ;
+            border-radius: 4px;
+            
+      }
+      #logout button{
+            border-radius: 4px;
+            background-color: #244393 ;
+            color: white;
+      }
+
     </style>
     <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
   </body>

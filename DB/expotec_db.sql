@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/09/2023 às 20:32
+-- Tempo de geração: 27/09/2023 às 22:40
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -58,7 +58,7 @@ CREATE TABLE `alunos` (
 --
 
 INSERT INTO `alunos` (`id`, `user`, `senha`, `turma_id`) VALUES
-(14, 'Bruno Teles de Lira', '123', 14);
+(15, 'test', '123', 14);
 
 -- --------------------------------------------------------
 
@@ -69,9 +69,18 @@ INSERT INTO `alunos` (`id`, `user`, `senha`, `turma_id`) VALUES
 CREATE TABLE `avisos` (
   `id` int(11) NOT NULL,
   `aviso` varchar(255) NOT NULL,
-  `data` date NOT NULL,
-  `turma_id` int(11) NOT NULL
+  `data_aviso` date NOT NULL,
+  `turma_id` int(11) NOT NULL,
+  `titulo` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `avisos`
+--
+
+INSERT INTO `avisos` (`id`, `aviso`, `data_aviso`, `turma_id`, `titulo`) VALUES
+(2, 'BlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBla', '2023-09-04', 14, 'Alunos, Sejam Bem vindos Aos Avisos!'),
+(4, 'Texto do Aviso', '2023-09-21', 14, 'Titulo do aviso');
 
 -- --------------------------------------------------------
 
@@ -268,13 +277,13 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de tabela `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `avisos`
 --
 ALTER TABLE `avisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `bimestres`

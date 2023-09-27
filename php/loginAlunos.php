@@ -27,11 +27,13 @@ if (isset($entrar)) {
         die();
     } else {
         session_start();
-        $sql = "SELECT id FROM alunos WHERE user = '$login'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
+        $sql = "SELECT id, turma_id FROM alunos WHERE user = '$login'";
+        $result2 = $conn->query($sql);
+
+        if ($result2->num_rows > 0) {
+            $row = $result2->fetch_assoc();
             $_SESSION['id'] = $row['id'];
+            $_SESSION['turma_id'] = $row['turma_id'];
         }
             $_SESSION['user'] = $login;
             header("Location: ../Global/Alunos/Index.php");

@@ -167,10 +167,10 @@ if (empty($_SESSION['user'])) {
                             if ($conn->connect_error) {
                                 die("Erro na conexão: " . $conn->connect_error);
                             }
-                            $query = "SELECT DISTINCT turma FROM alunos";
+                            $query = "SELECT * FROM turmas";
                             $result1 = mysqli_query($conn,$query);
                             while($row1= mysqli_fetch_array($result1)):;
-                          echo "<option value='".$row1['turma'] . "'>".$row1['turma']."<option>";
+                          echo "<option value='".$row1['id'] . "'>".$row1['nome']."<option>";
         endwhile;    
         $conn->close();                                       
                         ?>
@@ -190,7 +190,7 @@ if (empty($_SESSION['user'])) {
                               } 
                             }
                               $turmasele = $_POST['turmass'];
-                              $query = "SELECT user FROM alunos WHERE turma  ='$turmasele'";
+                              $query = "SELECT user FROM alunos WHERE turma_id  ='$turmasele'";
                               $result1 = mysqli_query($conn,$query);
                               while($row1= mysqli_fetch_array($result1)):;
                               echo "<option value='".$row1['user'] . "'>".$row1['user']."<option>";

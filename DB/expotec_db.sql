@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26/09/2023 às 22:09
+-- Tempo de geração: 27/09/2023 às 20:32
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -50,21 +50,15 @@ CREATE TABLE `alunos` (
   `id` int(11) NOT NULL,
   `user` varchar(120) DEFAULT NULL,
   `senha` varchar(120) DEFAULT NULL,
-  `turma` varchar(100) NOT NULL
+  `turma_id` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `alunos`
 --
 
-INSERT INTO `alunos` (`id`, `user`, `senha`, `turma`) VALUES
-(6, 'test', '123', 'tin3a'),
-(8, 'ore', '123', 'tam2'),
-(9, 'vasco', '123', 'tin1a'),
-(10, 'leandro', '123', 'tme1b'),
-(11, 'gabriel', '123', 'tin2b'),
-(12, 'eduardo', '123', 'tin3a'),
-(13, 'bruno teles de lira', '123', 'tin3a');
+INSERT INTO `alunos` (`id`, `user`, `senha`, `turma_id`) VALUES
+(14, 'Bruno Teles de Lira', '123', 14);
 
 -- --------------------------------------------------------
 
@@ -75,7 +69,8 @@ INSERT INTO `alunos` (`id`, `user`, `senha`, `turma`) VALUES
 CREATE TABLE `avisos` (
   `id` int(11) NOT NULL,
   `aviso` varchar(255) NOT NULL,
-  `data` date NOT NULL
+  `data` date NOT NULL,
+  `turma_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -98,6 +93,18 @@ INSERT INTO `bimestres` (`id`, `numero`) VALUES
 (2, 2),
 (3, 3),
 (4, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `horarios`
+--
+
+CREATE TABLE `horarios` (
+  `id` int(11) NOT NULL,
+  `materia_id` int(11) NOT NULL,
+  `horario` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -142,24 +149,6 @@ CREATE TABLE `notas` (
   `nota` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `notas`
---
-
-INSERT INTO `notas` (`id`, `alunos_id`, `materias_id`, `bimestres_id`, `nota`) VALUES
-(1, 6, 1, 1, 90),
-(2, 6, 2, 1, 85),
-(3, 6, 3, 1, 88),
-(4, 6, 4, 1, 92),
-(5, 6, 5, 1, 89),
-(6, 6, 6, 2, 78),
-(7, 6, 7, 2, 82),
-(8, 6, 8, 2, 91),
-(9, 6, 9, 2, 86),
-(10, 6, 10, 3, 95),
-(11, 6, 11, 3, 88),
-(12, 6, 12, 3, 79);
-
 -- --------------------------------------------------------
 
 --
@@ -172,12 +161,34 @@ CREATE TABLE `professores` (
   `senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Despejando dados para a tabela `professores`
+-- Estrutura para tabela `turmas`
 --
 
-INSERT INTO `professores` (`id`, `user`, `senha`) VALUES
-(1, 'test', '123');
+CREATE TABLE `turmas` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(120) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `turmas`
+--
+
+INSERT INTO `turmas` (`id`, `nome`) VALUES
+(3, 'fund1'),
+(4, 'fund2'),
+(5, 'fund3'),
+(6, 'fund4'),
+(7, 'fund5'),
+(8, 'fund6'),
+(9, 'fund7'),
+(10, 'fund8'),
+(11, 'fund9'),
+(12, 'medio1'),
+(13, 'medio2'),
+(14, 'medio3');
 
 --
 -- Índices para tabelas despejadas
@@ -193,19 +204,28 @@ ALTER TABLE `administradores`
 -- Índices de tabela `alunos`
 --
 ALTER TABLE `alunos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_turma_id` (`turma_id`);
 
 --
 -- Índices de tabela `avisos`
 --
 ALTER TABLE `avisos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_turma_id_avisos` (`turma_id`);
 
 --
 -- Índices de tabela `bimestres`
 --
 ALTER TABLE `bimestres`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `horarios`
+--
+ALTER TABLE `horarios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `materia_id` (`materia_id`);
 
 --
 -- Índices de tabela `materias`
@@ -229,6 +249,12 @@ ALTER TABLE `professores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `turmas`
+--
+ALTER TABLE `turmas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT para tabelas despejadas
 --
 
@@ -242,19 +268,25 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de tabela `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `avisos`
 --
 ALTER TABLE `avisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `bimestres`
 --
 ALTER TABLE `bimestres`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `horarios`
+--
+ALTER TABLE `horarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `materias`
@@ -275,8 +307,32 @@ ALTER TABLE `professores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de tabela `turmas`
+--
+ALTER TABLE `turmas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `alunos`
+--
+ALTER TABLE `alunos`
+  ADD CONSTRAINT `fk_turma_id` FOREIGN KEY (`turma_id`) REFERENCES `turmas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Restrições para tabelas `avisos`
+--
+ALTER TABLE `avisos`
+  ADD CONSTRAINT `fk_turma_id_avisos` FOREIGN KEY (`turma_id`) REFERENCES `turmas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Restrições para tabelas `horarios`
+--
+ALTER TABLE `horarios`
+  ADD CONSTRAINT `horarios_ibfk_1` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id`);
 
 --
 -- Restrições para tabelas `notas`

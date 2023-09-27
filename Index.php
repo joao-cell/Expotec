@@ -76,15 +76,8 @@
     <title>FortecHub</title>
   </head>
   <body>
-  
-  
- 
   <div class="container">
-        
-        
-        
     <div class="row vertical-align">
-
       <div id="prof"  class="col-md-4">
         <div class="text-center">
           <a href="./Global/login/loginProfessores.php">

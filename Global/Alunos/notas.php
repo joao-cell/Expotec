@@ -66,7 +66,7 @@ $sql = "SELECT materias.nome AS materia,
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    echo "<table border='1'>
+    echo "<table border='1'class='table table-hover table-striped table-borderred'>
             <tr>
                 <th>Materia</th>
                 <th>Bimestre 1</th>

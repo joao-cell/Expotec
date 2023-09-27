@@ -37,7 +37,6 @@
     <div class="row">
         <div class="col mt-5">
         <?php
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -51,38 +50,46 @@ if ($conn->connect_error) {
 
 session_start();
 $aluno_id = $_SESSION['id'];
-$sql = "SELECT materias.nome AS materia, notas.nota, bimestres.numero AS bimestre
-        FROM notas
-        INNER JOIN materias ON notas.materias_id = materias.id
-        INNER JOIN bimestres ON notas.bimestres_id = bimestres.id
-        WHERE notas.alunos_id = $aluno_id";
+
+// Modificando o SQL para obter as notas por bimestre
+$sql = "SELECT materias.nome AS materia, 
+               MAX(CASE WHEN bimestres.id = 1 THEN notas.nota END) AS bimestre_1, 
+               MAX(CASE WHEN bimestres.id = 2 THEN notas.nota END) AS bimestre_2, 
+               MAX(CASE WHEN bimestres.id = 3 THEN notas.nota END) AS bimestre_3, 
+               MAX(CASE WHEN bimestres.id = 4 THEN notas.nota END) AS bimestre_4 
+        FROM notas 
+        INNER JOIN materias ON notas.materias_id = materias.id 
+        INNER JOIN bimestres ON notas.bimestres_id = bimestres.id 
+        WHERE notas.alunos_id = $aluno_id 
+        GROUP BY materia";
 
 $result = $conn->query($sql);
-
 
 if ($result->num_rows > 0) {
     echo "<table border='1'>
             <tr>
-                <th>Matéria</th>
-                <th>Nota</th>
-                <th>Bimestre</th>
+                <th>Materia</th>
+                <th>Bimestre 1</th>
+                <th>Bimestre 2</th>
+                <th>Bimestre 3</th>
+                <th>Bimestre 4</th>
             </tr>";
     while ($row = $result->fetch_assoc()) {
         echo "<tr>
                 <td>" . $row["materia"] . "</td>
-                <td>" . $row["nota"] . "</td>
-                <td>" . $row["bimestre"] . "</td>
+                <td>" . $row["bimestre_1"] . "</td>
+                <td>" . $row["bimestre_2"] . "</td>
+                <td>" . $row["bimestre_3"] . "</td>
+                <td>" . $row["bimestre_4"] . "</td>
               </tr>";
     }
     echo "</table>";
 } else {
-    echo "ESSE ALUNO AINDA NÃO POSSUI NOTAS EM NENHUMA MATERIA";
+    echo "ESSE ALUNO AINDA NÃO POSSUI NOTAS EM NENHUMA MATÉRIA";
 }
 
-
 $conn->close();
-?>
-        
+?>      
         </div>
     </div>
 </div>

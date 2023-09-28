@@ -65,10 +65,10 @@ if (isset($_POST['sair'])) {
         <div class="col mt-5">
             <form>
               <h1>Titulo:<br>  
-              <input type="text" name="titulo" id=""><BR><br>
+              <input type="text" name="titulo" id="titulo" placeholder="Escreva o título"><BR><br>
                 
                   Descrição:</h1>
-                  <textarea cols="30" rows="10"></textarea><br>
+                  <textarea cols="30" rows="10" placeholder="Escreva a descrição"></textarea><br>
                 
               <br>
               <button type="submit" name="btn_enviar" class="btn">Enviar Mensagem</button>
@@ -155,39 +155,61 @@ if (isset($_POST['sair'])) {
                 margin-bottom: 20px;
 
         }
-        .col button:hover {
-              background-color: #192f69;
-        }
-        .col input{
-                width: 60%;
-                border-style: none;
-                border-radius: 9px;
-                box-shadow: 0px 1px 4px grey;
-        }
-        .col textarea{
-                position: flex;
-                resize: none;
-                width: 80%;
-                border-style: none;
-                border-radius: 9px;
-                height: 20vh;
-                box-shadow: 0px 1px 4px grey;
-        }
-        #logout button:hover{
-            background-color:  #324f9a  ;
+        .col button{
+               
+                
+               background-color: #244393;
+               color: white;
+               width: 50%;
+               border-radius: 10px;
+               margin-bottom: 20px;
+
+       }
+       .col button:hover {
+             background-color: #192f69;
+       }
+       .col input{
+               width: 100%;
+               border-style: none;
+               border-radius: 9px;
+               box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+               background-color: #F3F5F5;
+               font-size: 22px;
+       }
+       .col textarea{
+               position: flex;
+               resize: none;
+               width: 100%;
+               border-style: none;
+               
+               border-radius: 9px;
+               height: 20vh;
+               box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+               background-color: #F3F5F5;
+       }
+       .col select{
+               padding: 1px;
+               border-radius: 0px;
+               border-style: none;
+               box-shadow: 0px 1px 4px grey;
+               color: gray;
+                   
+
+       }
+       #logout button:hover{
+            background-color:  #324f9a ;
             border-radius: 4px;
             
-      }
-      #logout button{
-            border-radius: 4px;
-            background-color: #244393 ;
-            color: white;
-      }
-      #logout{
-            height: 39px;
+}
+#logout button{
+  border-radius: 4px;
+  background-color: #244393 ;
+  color: white;
+}
+#logout{
+  height: 39px;
 
-      }
-        
+}
 
 </style>
     <script src="js/bootstrap.min.js"  crossorigin="anonymous"></script>

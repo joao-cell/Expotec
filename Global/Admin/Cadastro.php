@@ -33,6 +33,50 @@ nav a:hover{
   height: 39px;
 
 }
+.col input{
+        border-radius: 10px;
+        border-style: none;
+        box-shadow: 0px 1px 4px grey;
+        padding: 5px;
+        text-align: left;
+      } 
+.col select{
+        padding: 5px;
+        border-radius: 10px;
+        border-style: none;
+        box-shadow: 0px 1px 4px grey;
+        color: gray;
+      } 
+.col button {
+        background-color: #244393 ;
+        border-radius: 10px;
+        border-style: none;
+        box-shadow: 0px 1px 4px grey;
+        color: white;
+      }
+
+.col button:hover{
+        background-color: #192f69 ;
+    }
+#table-alunos{
+        
+
+}
+#delete{
+      background-color: #F72427;
+}
+#delete:hover{
+      background-color: #aa0000;
+}
+#Alt{
+      background-color: #1963f7;
+
+}
+#Alt:hover{
+      background-color: #164dbf;
+
+}
+
 </style>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -77,3 +121,141 @@ nav a:hover{
     </div>
   </div>
 </nav>
+<center>
+<h1 style="padding-top: 20px;">Usuários</h1>
+</center>
+<div class="container">
+      <div class="row">
+          <div class="col mt-5">
+            <center>
+            <form method="POST">
+            <input type="text" size="35px" placeholder="Nome" >
+              <select>
+                  <option>Tipo</option>
+                  <option>Administradores</option>
+                  <option>Professores</option>
+                  <option>Alunos</option>
+              </select>
+              
+              <button type="submit" class="btn" id="src">Pesquisar</button>
+              </form>
+              </center>
+              
+              <div id="table-alunos">
+                  <table border='1' class='table table-hover  table-striped table-bordered'>
+                  <thead class="thead-light">
+                  <tr>
+                    <th>Nome</th>
+                    <th>Senha</th>
+                    <th>Tipo</th>
+                    <tH>Ação</th>
+                  </tr>
+                  <tr>
+                    <td>Juquinha</td>
+                    <td>123</td>
+                    <td>Aluno</td>
+                
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+      
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                    
+                  </tr>
+                  <tr>
+                    <td>Maria</td>
+                    <td>123</td>
+                    <td>Aluno</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+                    
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                  </tr>
+                  <tr>
+                    <td>Joanilda Vitória</td>
+                    <td>123</td>
+                    <td>Aluno</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                  </tr>
+                  
+                  </table>
+              </div>
+
+              <div id="table-adm">
+                  <table border='1' class='table table-hover  table-striped table-bordered'>
+                  <thead class="thead-light">
+                  <tr>
+                    <th>Nome</th>
+                    <th>Senha</th>
+                    <th>Tipo</th>
+                    <tH>Ação</th>
+                  </tr>
+                  <tr>
+                    <td>Bruno</td>
+                    <td>123</td>
+                    <td>Administrador</td>
+                
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+      
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                    
+                  </tr>
+                  <tr>
+                    <td>João</td>
+                    <td>123</td>
+                    <td>Administrador</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+                    
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                  </tr>
+                  <tr>
+                    <td>Eduardo</td>
+                    <td>123</td>
+                    <td>Administrador</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                  </tr>
+                  
+                  </table>
+              </div>
+              <div id="table-prof">
+                  <table border='1' class='table table-hover  table-striped table-bordered'>
+                  <thead class="thead-light">
+                  <tr>
+                    <th>Nome</th>
+                    <th>Senha</th>
+                    <th>Tipo</th>
+                    <tH>Ação</th>
+                  </tr>
+                  <tr>
+                    <td>Kleber</td>
+                    <td>123</td>
+                    <td>Professor</td>
+                
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+      
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                    
+                  </tr>
+                  <tr>
+                    <td>Leandro</td>
+                    <td>123</td>
+                    <td>Professor</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+                    
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                  </tr>
+                  <tr>
+                    <td>Gilmar Aquino</td>
+                    <td>123</td>
+                    <td>Professor</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                  </tr>
+                  
+                  </table>
+              </div>
+          </div>
+      </div>   
+</div>

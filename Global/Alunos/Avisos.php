@@ -25,7 +25,12 @@ if (isset($_POST['sair'])) {
                   background-repeat: no-repeat;
 
           }
-          .conteiner h1{
+          .container h2{
+            padding-left: 20px;
+                  
+          }
+          .container h2{
+            padding-left: 20px;
                   
           }
           nav a:hover{
@@ -65,6 +70,13 @@ if (isset($_POST['sair'])) {
         #logout{
           height: 39px;
 
+        }
+        .col{
+          padding: 10px;
+          border-style: none;
+          box-shadow: 0px 1px 4px grey;
+          border-radius: 9px;
+          
         }
    
 
@@ -109,7 +121,11 @@ if (isset($_POST['sair'])) {
   </div>
   </div>
 </nav>
-<div class="conteiner">
+<center>
+    <h1 style="padding-top: 50px">Todos os Avisos</h1><p>
+</center>
+>
+<div class="container">
     <div class="row">
         <div class="col mt-5">
         
@@ -139,14 +155,7 @@ if (!$result_avisos) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Avisos</title>
-</head>
-<body>
-    <h1>TODOS OS AVISOS</h1><p>
+
     
     <?php
 if (mysqli_num_rows($result_avisos) > 0) {
@@ -158,6 +167,7 @@ if (mysqli_num_rows($result_avisos) > 0) {
       echo "<h2>$titulo</h2>";
       echo "<strong>  Data: </strong> $data_aviso</p>";
       echo "<p>$aviso</p>";
+      echo "<hr>";
   }
     }
  else {

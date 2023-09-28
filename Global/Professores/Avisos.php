@@ -70,16 +70,16 @@ nav a:hover{
           .conteiner{
                   position: fixed;
                   left: 37%;
-                  top: 25%;
-                  border-style: none;
-                  padding-bottom: 45px;
+                  top: 20%;
+                  border-style: none ;
+                  padding-bottom: 25px;
                   padding-left: 15px;
                   padding-right: 15px;
-                  
+                  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
                   border-radius: 9px;
                   width: 25%;
                   
-                  box-shadow: 0px 1px 4px grey;
+                  
                   
                 }
           nav a:hover{
@@ -112,9 +112,8 @@ nav a:hover{
 
         }
         .col button{
-
-                position: absolute;
-                left: 20%;
+               
+                
                 background-color: #244393;
                 color: white;
                 width: 50%;
@@ -126,19 +125,32 @@ nav a:hover{
               background-color: #192f69;
         }
         .col input{
-                width: 60%;
+                width: 100%;
                 border-style: none;
                 border-radius: 9px;
-                box-shadow: 0px 1px 4px grey;
+                box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+                background-color: #F3F5F5;
+                font-size: 22px;
         }
         .col textarea{
                 position: flex;
                 resize: none;
-                width: 80%;
+                width: 100%;
                 border-style: none;
+                
                 border-radius: 9px;
                 height: 20vh;
+                box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+                background-color: #F3F5F5;
+        }
+        .col select{
+                padding: 1px;
+                border-radius: 0px;
+                border-style: none;
                 box-shadow: 0px 1px 4px grey;
+                color: gray;
+                    
+
         }
 </style>
     <meta charset="utf-8"/>
@@ -184,11 +196,13 @@ nav a:hover{
         <div class="col mt-5">
             <form method="POST">
                 <h1>Titulo:<br>
-                    <input type="text" name="titulo"><br><br>
-
+                    
+                    <input type="text" name="titulo" placeholder="Escreva o título"><br><br>
+                    </center>
                     Descrição:</h1>
-                <textarea cols="30" rows="10" name="descricao"></textarea><br>
-
+                
+                <textarea cols="30" rows="10" name="descricao" placeholder="Escreva a descrição"></textarea><br>
+                </center>
                 <select name="sala">
                     <option value="">Selecionar Sala</option>
                     <?php
@@ -197,9 +211,10 @@ nav a:hover{
                         echo '<option value="' . $row['id'] . '">' . $row['nome'] . '</option>';
                     }
                     ?>
-                </select><br>
-
+                </select><br><br>
+                <center>
                 <button type="submit" name="btn_enviar" class="btn">Enviar Mensagem</button>
+                </center>
             </form>
         </div>
     </div>

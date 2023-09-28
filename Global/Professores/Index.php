@@ -71,13 +71,12 @@ if (isset($_POST['sair'])) {
         <div id="logout"><button type="submit" name="sair" class="btn">Sair</button></div>
     </form>
     </nav>
-    <div class="conteiner">
+    <div class="container">
       <div class="row">
         <div class="col mt-5"></div>
-      </div>
-    </div>
-    <div id="texto">
-    <h1>Bem-vindo à FortecHub - Seu Portal de Gestão Escolar</h1>
+        <div id="texto">
+    <center><h1>Bem-vindo à FortecHub - Seu Portal de Gestão Escolar</h1></center>
+    <hr style=" border-top: 1px dashed;">
 
 <p style="letter-spacing: 0.1em; text-align: justify;" class="container-fluid">Na Escola Fortec, acreditamos no poder da educação para transformar vidas.<br>
   Com o compromisso de oferecer uma experiência educacional de excelência, apresentamos o FortecHub, o seu portal completo de gestão escolar.<br>
@@ -90,11 +89,11 @@ if (isset($_POST['sair'])) {
 
 <br><br>3. <b>Horários Personalizados:</b> Acesse os horários de aulas de forma rápida e prática. Nunca perca uma aula importante com o nosso sistema de horários personalizados.
 
-<br><br>4. <b>Gestão de Turmas:</b> Gerencie as turmas de forma eficiente, atribua professores, aloque alunos e tenha controle total sobre a organização acadêmica.
 
-<br><br>5. <b>Suporte 24/7:</b> Estamos aqui para ajudar. Nosso suporte está disponível 24 horas por dia, 7 dias por semana, para atender às suas necessidades e responder às suas perguntas.
 
-<br><br>Juntos Rumo ao Sucesso: Na FortecHub, acreditamos que a parceria entre educadores, alunos e pais é fundamental para o sucesso educacional.
+
+
+<br><br>Juntos Rumo ao Sucesso: Na Fortec, acreditamos que a parceria entre educadores, alunos e pais é fundamental para o sucesso educacional.
 
 <br>Estamos comprometidos em fornecer as ferramentas necessárias para promover o aprendizado e o desenvolvimento de nossos alunos.
 
@@ -102,6 +101,9 @@ if (isset($_POST['sair'])) {
 
 <br>Seja bem-vindo à era da gestão escolar moderna. Seja bem-vindo à <b>FortecHub<b>.</p>
     </div>
+      </div>
+    </div>
+</div> 
 
     
     <style>

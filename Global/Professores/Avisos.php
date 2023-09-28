@@ -1,18 +1,42 @@
 <?php
-
+// Inicialização da sessão
 session_set_cookie_params(0);
 session_start();
+
+// Verifique se o usuário está autenticado
 if (empty($_SESSION['user'])) {
-    header('Location: ../login/logout.html'); 
-    exit(); 
+    header('Location: ../login/logout.html');
+    exit();
 }
 
+// Verifique se o botão "Sair" foi pressionado
 if (isset($_POST['sair'])) {
-  session_destroy();
-  header('Location: ../../logout.html'); 
+    session_destroy();
+    header('Location: ../../logout.html');
+    exit();
 }
 
+// Conexão com o banco de dados (substitua com suas informações de conexão)
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "expotec_db";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verifique a conexão
+if ($conn->connect_error) {
+    die("Conexão com o banco de dados falhou: " . $conn->connect_error);
+}
+
+// Consulta para recuperar as salas
+$sql = "SELECT id, nome FROM turmas";
+$result = $conn->query($sql);
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
 <style>
 nav a:hover{
 
@@ -117,84 +141,92 @@ nav a:hover{
                 box-shadow: 0px 1px 4px grey;
         }
 </style>
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="../css/bootstrap.min.css"
-      crossorigin="anonymous"
-    />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" crossorigin="anonymous"/>
     <title>FortecHub</title>
-  </head>
-  <body>
-    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<script src="js/bootstrap.bundle.min.js"></script>
 
-    <!-- Navbar -->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark"
-      style="background-color: #244393"
-    >
-      <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393">
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" style="color: white" href="index.PHP"
-              >Inicio</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../professores/notas.php"
-              >Notas</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../professores/avisos.php"
-              >Avisos</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              style="color: white"
-              href="../professores/horarios.php"
-              >Horários</a
-            >
-          </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="index.PHP">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="../professores/notas.php">Notas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="../professores/avisos.php">Avisos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="../professores/horarios.php">Horários</a>
+            </li>
         </ul>
         <div id="logout">
-          <form method="post">
-            <div><button type="submit" name="sair" class="btn">Sair</button></div>
-          </form>
-      </div>
-      </div>
-    </nav>
-    <div id="texto">
-  <center>
-  <h1>Página de Avisos</h1>
-    <h2>Envie avisos para todos verem!</h2>
-  </center>
+            <form method="post">
+                <div><button type="submit" name="sair" class="btn">Sair</button></div>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="texto">
+    <center>
+        <h1>Página de Avisos</h1>
+        <h2>Envie avisos para todos verem!</h2>
+    </center>
 </div>
 <div class="conteiner">
     <div class="row">
         <div class="col mt-5">
-            <form>
-              <h1>Titulo:<br>  
-              <input type="text" name="titulo" id=""><BR><br>
-                
-                  Descrição:</h1>
-                  <textarea cols="30" rows="10"></textarea><br>
-                
-              <br>
-              <button type="submit" name="btn_enviar" class="btn">Enviar Mensagem</button>
-              </form>
+            <form method="POST">
+                <h1>Titulo:<br>
+                    <input type="text" name="titulo"><br><br>
+
+                    Descrição:</h1>
+                <textarea cols="30" rows="10" name="descricao"></textarea><br>
+
+                <select name="sala">
+                    <option value="">Selecionar Sala</option>
+                    <?php
+                    // Preencha o ComboBox com as salas
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row['id'] . '">' . $row['nome'] . '</option>';
+                    }
+                    ?>
+                </select><br>
+
+                <button type="submit" name="btn_enviar" class="btn">Enviar Mensagem</button>
+            </form>
         </div>
     </div>
 </div>
+</body>
+</html>
+
+<?php
+if (isset($_POST['btn_enviar'])) {
+    // Capturar os dados do formulário
+    $titulo = $_POST['titulo'];
+    $descricao = $_POST['descricao'];
+    $sala_id = $_POST['sala']; // A sala selecionada no ComboBox
+
+    // Inserir o aviso no banco de dados (substitua com sua lógica de inserção)
+    $sql_insert_aviso = "INSERT INTO avisos (aviso, data_aviso, turma_id, titulo) VALUES (?, NOW(), ?, ?)";
+    $stmt = $conn->prepare($sql_insert_aviso);
+    $stmt->bind_param("sds", $descricao, $sala_id, $titulo);
+
+    if ($stmt->execute()) {
+        echo "Aviso inserido com sucesso!";
+    } else {
+        echo "Erro ao inserir o aviso: " . $stmt->error;
+    }
+
+    // Fechar a declaração e a conexão
+    $stmt->close();
+    $conn->close();
+}
+?>

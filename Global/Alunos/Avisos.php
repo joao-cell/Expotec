@@ -1,10 +1,3 @@
-<?php
-session_start();
-echo $_SESSION['id'];
-echo $_SESSION['user'];
-echo $_SESSION['turma_id'];
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>

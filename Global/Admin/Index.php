@@ -53,7 +53,7 @@ if (isset($_POST['sair'])) {
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../Admin/avisos.html"
+            <a class="nav-link" style="color: white" href="../Admin/avisos.php"
               >Avisos</a
             >
           </li>

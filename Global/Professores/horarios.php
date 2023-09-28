@@ -1,3 +1,39 @@
+<?php
+
+session_set_cookie_params(0);
+session_start();
+if (empty($_SESSION['user'])) {
+    header('Location: ../login/logout.html'); 
+    exit(); 
+}
+
+if (isset($_POST['sair'])) {
+  session_destroy();
+  header('Location: ../../logout.html'); 
+}
+
+?>
+<style>
+      nav a:hover{
+
+        background-color: #324F9A!important;
+        border-radius: 9px;
+      }
+      #logout button:hover{
+                  background-color:  #324f9a ;
+                  border-radius: 4px;
+                  
+      }
+      #logout button{
+        border-radius: 4px;
+        background-color: #244393 ;
+        color: white;
+      }
+      #logout{
+        height: 39px;
+
+      }
+</style>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -50,5 +86,10 @@
             >
           </li>
         </ul>
+        <div id="logout">
+          <form method="post">
+            <div><button type="submit" name="sair" class="btn">Sair</button></div>
+          </form>
+      </div>
       </div>
     </nav>

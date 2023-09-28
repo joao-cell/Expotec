@@ -1,3 +1,4 @@
+
 <style>
       html,
       body {
@@ -72,7 +73,60 @@
       .mb-3 button:hover {
             background-color: #192f69;
         }
-    </style>
+        <style>
+          html,body{
+
+                  width:100vw;
+                  height:100vh;
+                  overflow-x:hidden;
+                  background-image:; 
+                  background-size: 100% 100%;
+                  background-attachment: fixed;
+                  background-repeat: no-repeat;
+
+          }
+          .conteiner h1{
+                  
+          }
+          nav a:hover{
+
+                background-color: #324F9A!important;
+                border-radius: 9px;
+            }
+          .left{
+                position: absolute;
+                top: 55px;
+                width: 20%;
+                height: 91%;
+                overflow: hidden;
+
+          }
+          #texto h1{
+
+
+
+          }
+          #texto h2{
+                color: gray;
+                font-size: 18px;
+                
+
+        }
+        #logout button:hover{
+            background-color:  #324f9a ;
+            border-radius: 4px;
+            
+        }
+        #logout button{
+          border-radius: 4px;
+          background-color: #244393 ;
+          color: white;
+        }
+        #logout{
+          height: 39px;
+
+        }
+</style>
 
 
 
@@ -88,6 +142,10 @@ session_start();
 if (empty($_SESSION['user'])) {
     header('Location: ../login/loginProfessores.php'); 
     exit(); 
+}
+if (isset($_POST['sair'])) {
+  session_destroy();
+  header('Location: ../../logout.html'); 
 }
 
 ?>
@@ -144,6 +202,11 @@ if (empty($_SESSION['user'])) {
             >
           </li>
         </ul>
+        <div id="logout">
+          <form method="post">
+            <div><button type="submit" name="sair" class="btn">Sair</button></div>
+          </form>
+      </div>
       </div>
     </nav>
     <div class="container">
@@ -172,7 +235,8 @@ if (empty($_SESSION['user'])) {
                             while($row1= mysqli_fetch_array($result1)):;
                           echo "<option value='".$row1['id'] . "'>".$row1['nome']."<option>";
         endwhile;    
-        $conn->close();                                       
+        $conn->close();    
+                                           
                         ?>
                         
 
@@ -195,7 +259,12 @@ if (empty($_SESSION['user'])) {
                               while($row1= mysqli_fetch_array($result1)):;
                               echo "<option value='".$row1['user'] . "'>".$row1['user']."<option>";
                         endwhile;
+                        
                         $conn->close();
+
+                        
+                        
+                      
                             ?>
                         
                     </select>

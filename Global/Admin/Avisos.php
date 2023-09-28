@@ -1,3 +1,18 @@
+<?php
+
+session_set_cookie_params(0);
+session_start();
+if (empty($_SESSION['user'])) {
+    header('Location: ../login/loginAdmin.php'); 
+    exit(); 
+}
+
+if (isset($_POST['sair'])) {
+  session_destroy();
+  header('Location: ../../logout.html'); 
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -25,7 +40,7 @@
         <a class="nav-link" style="color: white" href="../admin/notas.php">Notas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  style="color: white" href="../admin/avisos.html">Avisos</a>
+        <a class="nav-link"  style="color: white" href="../admin/avisos.php">Avisos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"  style="color: white" href="../admin/horarios.php">Horários</a>
@@ -34,6 +49,9 @@
         <a class="nav-link"  style="color: white" href="../admin/cadastro.php">Cadastro</a>
       </li>
     </ul>
+    <form method="post">
+      <div id="logout"><button type="submit" name="sair" class="btn">Sair</button></div>
+  </form>
   </div>
 </nav>
 <div id="texto">
@@ -155,6 +173,20 @@
                 height: 20vh;
                 box-shadow: 0px 1px 4px grey;
         }
+        #logout button:hover{
+            background-color:  #324f9a  ;
+            border-radius: 4px;
+            
+      }
+      #logout button{
+            border-radius: 4px;
+            background-color: #244393 ;
+            color: white;
+      }
+      #logout{
+            height: 39px;
+
+      }
         
 
 </style>

@@ -118,7 +118,7 @@ if (isset($_POST['sair'])) {
                 die("Falha na conexão: " . $conn->connect_error);
             }
 
-            session_start();
+        
             $aluno_id = $_SESSION['id'];
 
           

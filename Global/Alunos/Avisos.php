@@ -114,7 +114,7 @@ if (isset($_POST['sair'])) {
         <div class="col mt-5">
         
 <?php
-session_start();
+
 $host = "localhost";
 $username = "root";
 $password = "";

@@ -81,10 +81,30 @@ if (isset($_POST['sair'])) {
       </div>
     </div>
     <div id="texto">
-      <center>
-      <h1>Bem Vindo ao FortecHub <?php echo $_SESSION['user'];?></h1>
-        <h2>Acesse suas notas, seus horários e veja seus avisos! </h2>
-      </center>
+    <h1>Bem-vindo à FortecHub - Seu Portal de Gestão Escolar</h1>
+
+    <p style="letter-spacing: 0.1em; text-align: justify;" class="container-fluid">Na Escola Fortec, acreditamos no poder da educação para transformar vidas.<br>
+  Com o compromisso de oferecer uma experiência educacional de excelência, apresentamos o FortecHub, o seu portal completo de gestão escolar.<br>
+
+<b>O Que Oferecemos:</b>
+
+<br><br>1. <b>Notas e Acompanhamento Acadêmico:</b> Acompanhe o progresso dos alunos de forma eficiente. Mantenha registros detalhados de notas, boletins e desempenho acadêmico em um único lugar.
+
+<br><br>2. <b>Avisos e Comunicação:</b> Fique atualizado com os últimos avisos e comunicados da escola. Mantenha-se conectado com pais, alunos e professores de maneira simples e eficaz.
+
+<br><br>3. <b>Horários Personalizados:</b> Acesse os horários de aulas de forma rápida e prática. Nunca perca uma aula importante com o nosso sistema de horários personalizados.
+
+<br><br>4. <b>Gestão de Turmas:</b> Gerencie as turmas de forma eficiente, atribua professores, aloque alunos e tenha controle total sobre a organização acadêmica.
+
+<br><br>5. <b>Suporte 24/7:</b> Estamos aqui para ajudar. Nosso suporte está disponível 24 horas por dia, 7 dias por semana, para atender às suas necessidades e responder às suas perguntas.
+
+<br><br>Juntos Rumo ao Sucesso: Na FortecHub, acreditamos que a parceria entre educadores, alunos e pais é fundamental para o sucesso educacional.
+
+<br>Estamos comprometidos em fornecer as ferramentas necessárias para promover o aprendizado e o desenvolvimento de nossos alunos.
+
+<br>Explore o FortecHub e descubra como podemos simplificar a gestão escolar e aprimorar a experiência de ensino e aprendizado na Escola Fortec.
+
+<br>Seja bem-vindo à era da gestão escolar moderna. Seja bem-vindo à <b>FortecHub<b>.</p>
     </div>
 
     <style>

@@ -162,7 +162,7 @@ if (!$result) {
             <?php
             if (mysqli_num_rows($result) > 0) {
                 $currentDay = null; // Variável para rastrear o dia atual
-                echo '<table class="table">';
+                echo "<table border='1' class='table table-hover table-striped table-bordered'>";
                 echo '<thead>';
                 echo '<tr>';
                 echo '<th>Dia</th>';
@@ -177,21 +177,21 @@ if (!$result) {
                     $hora = $row['hora_horas'];
                     $turma = $row['nome_turma'];
 
-                    // Se o dia atual for diferente do dia no registro atual, comece uma nova linha
+                    
                     if ($currentDay !== $dia) {
                         if ($currentDay !== null) {
-                            echo '</td></tr>'; // Fecha a linha anterior
+                            echo '</td></tr>'; 
                         }
-                        echo "<tr><td>$dia</td><td>"; // Inicia uma nova linha
+                        echo "<tr><td><b>$dia</b></td><td>";
                         $currentDay = $dia;
                     } else {
-                        echo '<br> '; // Separa horários do mesmo dia com uma vírgula
+                        echo '<br> '; 
                     }
 
-                    echo "$hora - $materia ($professor)";
+                    echo "<br><b>$hora</b> - $materia ($professor)";//imprime as coisa ai
                 }
 
-                // Fecha a última linha
+                
                 echo '</td></tr>';
                 echo '</tbody>';
                 echo '</table>';

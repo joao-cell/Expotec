@@ -145,7 +145,7 @@ INNER JOIN turmas ON horarios.turma_id = turmas.id
 INNER JOIN horas ON horarios.horas_id = horas.id
 INNER JOIN professores ON horarios.professores_id = professores.id
 INNER JOIN materias ON horarios.materia_id = materias.id
-WHERE horarios.turma_id = " . $_SESSION['turma_id'] . "
+WHERE horarios.turma_id = " 15"
 ORDER BY dias.id ASC, horas.hora ASC"; // Ordena por dia e, em seguida, por hora
 
 $result = mysqli_query($conn, $sql);

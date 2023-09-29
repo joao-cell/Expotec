@@ -233,18 +233,20 @@ if (isset($_POST['sair'])) {
                             $query = "SELECT * FROM turmas";
                             $result1 = mysqli_query($conn,$query);
                             while($row1= mysqli_fetch_array($result1)):;
-                          echo "<option value='".$row1['id'] . "'>".$row1['nome']."<option>";
+                            
+                          echo "<option value='".$row1['id'] . "'>".$row1['nome']."</option>";
         endwhile;    
         $conn->close();    
                                            
                         ?>
                         
 
-                    </select name="alunoss" value="alunos">
+                    </select>
                     <br>
                     <br>
                     <label>Selecione o aluno:<br>
-                      <select>
+                    
+                      <select name="alunoss" id="alunoss" >
                         
                             <?php 
                             if (isset($_POST['turmass'])) {
@@ -254,10 +256,10 @@ if (isset($_POST['sair'])) {
                               } 
                             }
                               $turmasele = $_POST['turmass'];
-                              $query = "SELECT user FROM alunos WHERE turma_id  ='$turmasele'";
+                              $query = "SELECT * FROM alunos WHERE turma_id  ='$turmasele'";
                               $result1 = mysqli_query($conn,$query);
                               while($row1= mysqli_fetch_array($result1)):;
-                              echo "<option value='".$row1['user'] . "'>".$row1['user']."<option>";
+                              echo "<option value='".$row1['id'] . "'>".$row1['user']."</option>";
                         endwhile;
                         
                         $conn->close();
@@ -266,17 +268,136 @@ if (isset($_POST['sair'])) {
                         
                       
                             ?>
+                            
                         
+                    </select>
+                    
+                    
+                    <input type="text" name="tur" id="tur" value="" readonly hidden>
+                        <?php 
+                        $seleid = $_POST['turmass'];
+                        $conn = mysqli_connect($hostname,$username,$password,$dbName);
+                        
+                        $sql = "SELECT * FROM turmas WHERE id = $seleid"; 
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            
+                            $row = $result->fetch_assoc();
+                            $textoDoBancoDeDados = $row["id"];
+                        
+                            echo '<script>';
+                            echo 'document.getElementById("tur").value = "' .$textoDoBancoDeDados . '";';
+                            echo '</script>';
+                        }
+                        
+                        
+                        $conn->close();
+                        ?>
+                        <br>
+                        <br>
+                        <label>Selecione o aluno:<br>
+                    
+                    <select name="materiass" id="materiass" >
+                      
+                          <?php 
+                          if (isset($_POST['turmass'])) {
+                            $conn = mysqli_connect($hostname,$username,$password,$dbName);
+                            if ($conn->connect_error) {
+                                die("Erro na conexão: " . $conn->connect_error);
+                            } 
+                          }
+                            $turmasele = $_POST['turmass'];
+                            $query = "SELECT * FROM materias";
+                            $result1 = mysqli_query($conn,$query);
+                            while($row1= mysqli_fetch_array($result1)):;
+                            echo "<option value='".$row1['id'] . "'>".$row1['nome']."</option>";
+                      endwhile;
+                      
+                      $conn->close();
+
+                      
+                      
+                    
+                          ?>
+                    </select>
+                    <br>
+                    <br>
+                    <label>Selecione o bimestre:<br>
+                    
+                    <select name="bimestress" id="bimestress" >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
                     </select>
                     <br>
                     <br>
                     Nota:<br>
-                      <input type="text" name="nota" placeholder="Digite a nota" size="10">
+                      <input type="text" id="notass" name="notass" placeholder="Digite a nota" size="10">
                     <br>
                     <br>
+                    
                     <div class="mb-3">
-                        <button type="submit" name="btn_enviar" class="btn">Enviar</button>
+                        <button type="submit" name="btn_enviar" class="btn_enviar">Enviar</button>
+                        <br>
+                        <br>
+                        <button type="submit" name="btn_update" class="btn_update">alterar nota ja existente</button>
                     </div>
+                    
+                    
+                    <br>
+                    <br>
+                    <?php 
+                    if (isset($_POST['btn_enviar'])) {
+                   if($_SERVER["REQUEST_METHOD"] === "POST"){
+                    
+                    $conn = mysqli_connect($hostname,$username,$password,$dbName);
+                    if ($conn->connect_error) {
+                      die("Erro na conexão: " . $conn->connect_error);
+                  }
+                  
+                $aluno = $_POST['alunoss'];
+                $materia = $_POST['materiass'];
+                $bimestre = $_POST['bimestress'];
+                $nota = $_POST['notass'];
+                $sql = "INSERT INTO notas (id,alunos_id materias_id, bimestres_id, nota) VALUES (NULL,'$aluno','$materia','$bimestre','$nota')";
+                
+                if ($conn->query($sql) === true) {
+
+                  echo "Dados inseridos com sucesso!";
+              } else {
+                  echo "Erro ao inserir dados: " . $conn->error;
+              }
+              if (isset($_POST['btn_update'])) {
+
+                if($_SERVER["REQUEST_METHOD"] === "POST"){
+                    
+                  $conn = mysqli_connect($hostname,$username,$password,$dbName);
+                  if ($conn->connect_error) {
+                    die("Erro na conexão: " . $conn->connect_error);
+                }
+                
+              $aluno = $_POST['alunoss'];
+              $materia = $_POST['materiass'];
+              $bimestre = $_POST['bimestress'];
+              $nota = $_POST['notass'];
+              $sql = "UPDATE notas SET nota='$nota' where bimestres_id='$bimestre', materias_id='$materia',alunos_id='$aluno'";
+              
+              if ($conn->query($sql) === true) {
+
+                echo "Dados atualizados com sucesso!";
+            } else {
+                echo "Erro ao atualizar dados: " . $conn->error;
+            }
+              }
+              
+            }
+            $conn->close();
+            }
+          }
+              
+                    ?>
                   
                 </label>
               </form>

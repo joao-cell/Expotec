@@ -15,7 +15,6 @@ if (isset($_POST['sair'])) {
     header('Location: ../../Index.php'); 
     exit();
 }
-
 // Conexão com o banco de dados (substitua com suas informações de conexão)
 $servername = "localhost";
 $username = "root";
@@ -159,20 +158,20 @@ nav a:hover{
                 box-shadow: 0px 1px 4px grey;
                 color: gray;
         }
-        #delete{
+        .btn{
             background-color: #F72427;
             width: 7%;
             
         }
-        #delete:hover{
+        .btn:hover{
             background-color: #aa0000;
         }
-        #alterar{
+        .btn{
             background-color: #1963f7;
             width: 7%;
 
         }
-        #alterar:hover{
+        .alterar:hover{
             background-color: #164dbf;
 
         }
@@ -248,72 +247,50 @@ nav a:hover{
         <div class="col mt-5">
 
             <?php
-
-            $host = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "expotec_db";
-
-            $conn = mysqli_connect($host, $username, $password, $database);
-
-            if (!$conn) {
-                die("Erro na conexão com o banco de dados: " . mysqli_connect_error());
-            }
-
-            
-
-            $sql_avisos = "SELECT * FROM avisos WHERE 1 ORDER BY data_aviso DESC";
-
-            $result_avisos = mysqli_query($conn, $sql_avisos);
-
-
-
-            if (!$result_avisos) {
-                die("Erro ao consultar os avisos da turma: " . mysqli_error($conn));
-            }
+                    $sql_avisos = "SELECT * FROM avisos WHERE 1 ORDER BY data_aviso DESC";
+                    $result_avisos = mysqli_query($conn, $sql_avisos);
+                    if (!$result_avisos) {
+                        die("Erro ao consultar os avisos da turma: " . mysqli_error($conn));
+                    }
             ?>
-
-
-
                 <?php
-if (mysqli_num_rows($result_avisos) > 0) {
-    while ($row_aviso = mysqli_fetch_assoc($result_avisos)) {
-        $titulo = $row_aviso['titulo'];
-        $data_aviso = $row_aviso['data_aviso'];
-        $aviso = $row_aviso['aviso'];
-        $turma_id = $row_aviso['turma_id'];
-        $id = $row_aviso['id'];
+        if (mysqli_num_rows($result_avisos) > 0) {
+            while ($row_aviso = mysqli_fetch_assoc($result_avisos)) {
+                $titulo = $row_aviso['titulo'];
+                $data_aviso = $row_aviso['data_aviso'];
+                $aviso = $row_aviso['aviso'];
+                $turma_id = $row_aviso['turma_id'];
+                $id = $row_aviso['id'];
 
 
-        $sql_turma = "SELECT nome FROM turmas WHERE id = $turma_id";
-        $result_turma = mysqli_query($conn, $sql_turma);
+                $sql_turma = "SELECT nome FROM turmas WHERE id = $turma_id";
+                $result_turma = mysqli_query($conn, $sql_turma);
 
-        if ($result_turma && mysqli_num_rows($result_turma) > 0) {
-            $row_turma = mysqli_fetch_assoc($result_turma);
-            $turma_nome = $row_turma['nome'];
-        } else {
+                if ($result_turma && mysqli_num_rows($result_turma) > 0) {
+                    $row_turma = mysqli_fetch_assoc($result_turma);
+                    $turma_nome = $row_turma['nome'];
+                } else {
 
-            $turma_nome = "Turma não encontrada";
-        }
+                    $turma_nome = "Turma não encontrada";
+                }
 
-        echo "<h2>$titulo</h2>";
-        echo "<strong>  Data: </strong> $data_aviso <b>Turma:</b> $turma_nome</p>";
-        echo "<p>$aviso</p>";
-        echo "<form method='post' action='../../phpremoverAviso.php'>";
-        echo "<input type='hidden' name='id' value='$id'>";
-        echo "<button type='button' class='btn' onclick='confirmarRemocao($id)'>Excluir</button>";
-        echo "</form>";
-        echo " ";
-        echo "<button id='alt' class='btn'>Alterar</button>";
-        echo ""
-        echo "<hr>";
+                echo "<h2>$titulo</h2>";
+                echo "<strong>  Data: </strong> $data_aviso <b>Turma:</b> $turma_nome</p>";
+                echo "<p>$aviso</p>";
+                echo "<form method='post' action='../../phpremoverAviso.php'>";
+                echo "<input type='hidden' name='id' value='$id'>";
+                echo "<button type='button' class='btn'  onclick='confirmarRemocao($id)' style='width: 10%;  background-color: #F72427;'>Excluir</button></form>";
+                echo " ";
+                echo "<button  class='btn' style='width: 10%;  background-color: #1963f7;'>Alterar</button>";
+                echo " ";
+                echo "<hr>";
     }
-} else {
-    echo "<p>Nenhum aviso disponivel</p>";
-}
+                } else {
+                    echo "<p>Nenhum aviso disponivel</p>";
+                }
 
-            mysqli_close($conn);
-            ?>  
+                            mysqli_close($conn);
+                ?>  
         </div>
     </div>
 </div>

@@ -124,7 +124,7 @@ if (isset($_POST['sair'])) {
 <center>
     <h1 style="padding-top: 50px">Todos os Avisos</h1><p>
 </center>
->
+
 <div class="container">
     <div class="row">
         <div class="col mt-5">
@@ -164,7 +164,7 @@ if (mysqli_num_rows($result_avisos) > 0) {
       $data_aviso = $row_aviso['data_aviso'];
       $aviso = $row_aviso['aviso'];
       $criador = $row_aviso['criador'];
-   
+    
       echo "<h2>$titulo</h2>";
       echo "<strong>  Data: </strong> $data_aviso  <b>Criador:</b> $criador</p>";
       echo "<p>$aviso</p>";

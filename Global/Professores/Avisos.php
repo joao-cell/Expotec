@@ -12,7 +12,7 @@ if (empty($_SESSION['user'])) {
 // Verifique se o botão "Sair" foi pressionado
 if (isset($_POST['sair'])) {
     session_destroy();
-    header('Location: ../../logout.html');
+    header('Location: ../../Index.php'); 
     exit();
 }
 

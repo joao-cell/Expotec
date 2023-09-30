@@ -9,7 +9,7 @@ if (empty($_SESSION['user'])) {
 
 if (isset($_POST['sair'])) {
   session_destroy();
-  header('Location: ../../logout.html'); 
+  header('Location: ../../Index.php'); 
 }
 
 ?>
@@ -110,7 +110,7 @@ if (isset($_POST['sair'])) {
   </div>
 </nav>
 <center>
-    <h1 style="padding-top: 50px">Horários</h1><p>
+    <h1 style="padding-top: 50px">Todos os horarios</h1><p>
 </center>
 >
 <div class="container">
@@ -165,7 +165,7 @@ if (!$result) {
                 echo "<table border='1' class='table table-hover table-striped table-bordered'>";
                 echo '<thead>';
                 echo '<tr>';
-                echo '<th>Dias</th>';
+                echo '<th>Dia</th>';
                 echo '<th>Horários</th>';
                 echo '</tr>';
                 echo '</thead>';
@@ -185,7 +185,7 @@ if (!$result) {
                         echo "<tr><td><b>$dia</b></td><td>";
                         $currentDay = $dia;
                     } else {
-                        echo '<hr>'; 
+                        echo '<br> '; 
                     }
 
                     echo "<br><b>$hora</b> - $materia ($professor)";//imprime as coisa ai

@@ -145,7 +145,7 @@ if (empty($_SESSION['user'])) {
 }
 if (isset($_POST['sair'])) {
   session_destroy();
-  header('Location: ../../logout.html'); 
+  header('Location: ../../Index.php'); 
 }
 
 ?>

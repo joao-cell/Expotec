@@ -173,23 +173,6 @@ nav a:hover{
                     <button class="btn btn-success" id="Alt">Alterar</button></td>
                     
                   </tr>
-                  <tr>
-                    <td>Maria</td>
-                    <td>123</td>
-                    <td>Aluno</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-                    
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                  </tr>
-                  <tr>
-                    <td>Joanilda Vitória</td>
-                    <td>123</td>
-                    <td>Aluno</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                  </tr>
-                  
                   </table>
                   <button class="btn btn-success" id="Add">Adicionar Aluno</button><br><br>
               </div>
@@ -213,22 +196,6 @@ nav a:hover{
       
                     <button class="btn btn-success" id="Alt">Alterar</button></td>
                     
-                  </tr>
-                  <tr>
-                    <td>João</td>
-                    <td>123</td>
-                    <td>Administrador</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-                    
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                  </tr>
-                  <tr>
-                    <td>Eduardo</td>
-                    <td>123</td>
-                    <td>Administrador</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
                   </tr>
                   
                   </table>
@@ -254,22 +221,7 @@ nav a:hover{
                     <button class="btn btn-success" id="Alt">Alterar</button></td>
                     
                   </tr>
-                  <tr>
-                    <td>Leandro</td>
-                    <td>123</td>
-                    <td>Professor</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-                    
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                  </tr>
-                  <tr>
-                    <td>Gilmar Aquino</td>
-                    <td>123</td>
-                    <td>Professor</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
 
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                  </tr>
                   
                   </table>
                   <button class="btn btn-success" id="Add">Adicionar Professor</button><br><br>
@@ -294,25 +246,6 @@ nav a:hover{
                     <button class="btn btn-success" id="Alt">Alterar</button></td>
                     
                   </tr>
-                  <tr>
-                    <td>Médio 2</td>
-                    
-                    <td>Turma</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-                    
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                  </tr>
-                  <tr>
-                    <td>Médio 3</td>
-                    
-                    <td>Turma</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                    
-                    </tr>
-                    
-                  
                   </table>
                   <button class="btn btn-success" id="Add">Adicionar Classe</button><br><br>
               </div>
@@ -336,24 +269,6 @@ nav a:hover{
                     <button class="btn btn-success" id="Alt">Alterar</button></td>
                     
                   </tr>
-                  <tr>
-                    <td>Matemática</td>
-                    
-                    <td>Matéria</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-                    
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                  </tr>
-                  <tr>
-                    <td>Biologia</td>
-                    
-                    <td>Matéria</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                    
-                    </tr>
-                    
                   
                   </table>
                   <button class="btn btn-success" id="Add">Adicionar Matéria</button><br><br>
@@ -378,26 +293,7 @@ nav a:hover{
       
                     <button class="btn btn-success" id="Alt">Alterar</button></td>
                     
-                  </tr>
-                  <tr>
-                    <td>Terça-feira</td>
-                    
-                    <td>Horário</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-                    
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                  </tr>
-                  <tr>
-                    <td>Quarta-feira</td>
-                    
-                    <td>Horário</td>
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                    
-                    </tr>
-                    
-                  
+                  </tr>            
                   </table>
                   <button class="btn btn-success" id="Add">Adicionar Horário</button><br><br>
               </div>

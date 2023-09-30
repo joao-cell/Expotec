@@ -112,7 +112,7 @@ if (isset($_POST['sair'])) {
 <center>
     <h1 style="padding-top: 50px">Todos os horarios</h1><p>
 </center>
->
+
 <div class="container">
     <div class="row">
         <div class="col mt-5">

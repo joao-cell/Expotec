@@ -126,6 +126,25 @@
           height: 39px;
 
         }
+        #enviar{
+            background-color: #244393;
+            color: white;
+            width: 60%;
+            padding: 5px;
+            border-style: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+
+        }
+        #enviar:hover{
+          background-color: #192f69;
+        }
+        #alterar{
+          width: 60%;
+            padding: 5px;
+            border-style: none;
+
+        }
 </style>
 
 
@@ -247,7 +266,7 @@ if (isset($_POST['sair'])) {
                     <label>Selecione o aluno:<br>
                     
                       <select name="alunoss" id="alunoss" >
-                        
+                      <option value="vazio">none</option>
                             <?php 
                             if (isset($_POST['turmass'])) {
                               $conn = mysqli_connect($hostname,$username,$password,$dbName);
@@ -300,6 +319,7 @@ if (isset($_POST['sair'])) {
                     
                     <select name="materiass" id="materiass" >
                       
+                      
                           <?php 
                           if (isset($_POST['turmass'])) {
                             $conn = mysqli_connect($hostname,$username,$password,$dbName);
@@ -339,10 +359,10 @@ if (isset($_POST['sair'])) {
                     <br>
                     
                     <div class="mb-3">
-                        <button type="submit" name="btn_enviar" class="btn_enviar">Enviar</button>
+                        <button type="submit" name="btn_enviar" class="btn_enviar" id="enviar">Enviar</button>
                         <br>
                         <br>
-                        <button type="submit" name="btn_update" class="btn_update">alterar nota ja existente</button>
+                        <button type="submit" name="btn_update" class="btn_update" id="alterar">Alterar</button>
                     </div>
                     
                     
@@ -361,7 +381,12 @@ if (isset($_POST['sair'])) {
                   $materia = $_POST['materiass'];
                   $bimestre = $_POST['bimestress'];
                   $nota = $_POST['notass'];
-                  
+                  if((empty($nota))||($aluno=="vazio")){
+
+                    echo "campo de notas vazio.";
+                  }
+                  else{
+                    if (is_numeric($nota) && $nota >= 0 && $nota <= 10) {
                   $sql = "INSERT INTO notas (alunos_id, materias_id, bimestres_id, nota) VALUES ('$aluno', '$materia', '$bimestre', '$nota')";
                 
                 if ($conn->query($sql) === true) {
@@ -370,6 +395,11 @@ if (isset($_POST['sair'])) {
               } else {
                   echo "Erro ao inserir dados: " . $conn->error;
               }
+            }
+            else{
+              echo "a nota deve estar ou ser 10 e 0";
+            }
+            }
               
             $conn->close();
             }
@@ -388,7 +418,12 @@ if (isset($_POST['sair'])) {
             $materia = $_POST['materiass'];
             $bimestre = $_POST['bimestress'];
             $nota = $_POST['notass'];
-            
+            if((empty($nota))||($aluno=="vazio")){
+              echo "campo de notas vazio.";
+            }
+            else 
+            {
+              if (is_numeric($nota) && $nota >= 0 && $nota <= 10) {
             $sql = "UPDATE notas SET nota='$nota' WHERE bimestres_id='$bimestre' AND materias_id='$materia' AND alunos_id='$aluno'";
           
           if ($conn->query($sql) === true) {
@@ -397,6 +432,11 @@ if (isset($_POST['sair'])) {
         } else {
             echo "Erro ao atualizar dados: " . $conn->error;
         }
+      }
+      else{
+        echo "a nota deve estar ou ser 10 e 0";
+      }
+      }
         $conn->close();
           }
           

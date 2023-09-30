@@ -68,8 +68,8 @@ nav a:hover{
           }
           
           .conteiner{
-                  position: fixed;
-                  left: 37%;
+                  position: absolute;
+                  left: 5%;
                   top: 20%;
                   border-style: none ;
                   padding-bottom: 25px;
@@ -78,9 +78,18 @@ nav a:hover{
                   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
                   border-radius: 9px;
                   width: 25%;
-                  
-                  
-                  
+                }
+                .container{
+                  position: fixed;
+                  left: 31%;
+                  top: 20%;
+                  border-style: none ;
+                  padding-bottom: 25px;
+                  padding-left: 15px;
+                  padding-right: 5px;
+                  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+                  border-radius: 9px;
+                  width: 25%;
                 }
           nav a:hover{
 
@@ -145,11 +154,26 @@ nav a:hover{
         }
         .col select{
                 padding: 1px;
-                border-radius: 0px;
+                border-radius: 1px;
                 border-style: none;
                 box-shadow: 0px 1px 4px grey;
                 color: gray;
-                    
+        }
+        #delete{
+            background-color: #F72427;
+            width: 7%;
+            
+        }
+        #delete:hover{
+            background-color: #aa0000;
+        }
+        #alterar{
+            background-color: #1963f7;
+            width: 7%;
+
+        }
+        #alterar:hover{
+            background-color: #164dbf;
 
         }
 </style>
@@ -213,12 +237,70 @@ nav a:hover{
                     ?>
                 </select><br><br>
                 <center>
-                <button type="submit" name="btn_enviar" class="btn">Enviar Mensagem</button>
+                    <button type="submit" name="btn_enviar" class="btn">Enviar Mensagem</button>
                 </center>
             </form>
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col mt-5">
+
+            <?php
+
+            $host = "localhost";
+            $username = "root";
+            $password = "";
+            $database = "expotec_db";
+
+            $conn = mysqli_connect($host, $username, $password, $database);
+
+            if (!$conn) {
+                die("Erro na conexão com o banco de dados: " . mysqli_connect_error());
+            }
+
+            
+
+            $sql_avisos = "SELECT * FROM avisos WHERE 1 ORDER BY data_aviso DESC";
+
+            $result_avisos = mysqli_query($conn, $sql_avisos);
+
+
+
+            if (!$result_avisos) {
+                die("Erro ao consultar os avisos da turma: " . mysqli_error($conn));
+            }
+            ?>
+
+
+
+                <?php
+            if (mysqli_num_rows($result_avisos) > 0) {
+            while ($row_aviso = mysqli_fetch_assoc($result_avisos)) {
+                $titulo = $row_aviso['titulo'];
+                $data_aviso = $row_aviso['data_aviso'];
+                $aviso = $row_aviso['aviso'];
+
+                echo "<h2>$titulo</h2>";
+                echo "<strong>  Data: </strong> $data_aviso</p>";
+                echo "<p>$aviso</p>";
+                echo "<button id='delete' class='btn'>Excluir</button>";
+                echo " ";
+                echo "<button id='alterar' class='btn'>Alterar</button>";
+                echo "<hr>";
+            }
+                }
+            else {
+                echo "<p>Nenhum aviso disponível para esta turma.</p>";
+            }
+
+            mysqli_close($conn);
+            ?>  
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
 

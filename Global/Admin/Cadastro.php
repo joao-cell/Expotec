@@ -76,6 +76,14 @@ nav a:hover{
       background-color: #164dbf;
 
 }
+#Add{
+    background-color: #1fdb12;
+    
+}
+#Add:hover{
+    background-color: #1bbf0f;
+    
+}
 
 </style>
 <!DOCTYPE html>
@@ -123,6 +131,7 @@ nav a:hover{
 </nav>
 <center>
 <h1 style="padding-top: 20px;">Usuários</h1>
+<h2 style="font-size: 18px; color: gray;">Adicione, altere ou exclua usuários, turmas, matérias e horários!</h2>
 </center>
 <div class="container">
       <div class="row">
@@ -135,6 +144,9 @@ nav a:hover{
                   <option>Administradores</option>
                   <option>Professores</option>
                   <option>Alunos</option>
+                  <option>Turmas</option>
+                  <option>Horários</option>
+                  <option>Matérias</option>
               </select>
               
               <button type="submit" class="btn" id="src">Pesquisar</button>
@@ -142,6 +154,7 @@ nav a:hover{
               </center>
               
               <div id="table-alunos">
+              <H1>Alunos</h1>
                   <table border='1' class='table table-hover  table-striped table-bordered'>
                   <thead class="thead-light">
                   <tr>
@@ -178,9 +191,11 @@ nav a:hover{
                   </tr>
                   
                   </table>
+                  <button class="btn btn-success" id="Add">Adicionar Aluno</button><br><br>
               </div>
 
               <div id="table-adm">
+              <H1>Administradores</h1>
                   <table border='1' class='table table-hover  table-striped table-bordered'>
                   <thead class="thead-light">
                   <tr>
@@ -217,8 +232,10 @@ nav a:hover{
                   </tr>
                   
                   </table>
+                  <button class="btn btn-success" id="Add">Adicionar Administrador</button><br><br>
               </div>
               <div id="table-prof">
+              <H1>Professores</h1>
                   <table border='1' class='table table-hover  table-striped table-bordered'>
                   <thead class="thead-light">
                   <tr>
@@ -255,6 +272,134 @@ nav a:hover{
                   </tr>
                   
                   </table>
+                  <button class="btn btn-success" id="Add">Adicionar Professor</button><br><br>
+              </div>
+              <div id="table-turmas">
+              <H1>Turmas</h1>
+                  <table border='1' class='table table-hover  table-striped table-bordered'>
+                  <thead class="thead-light">
+                  <tr>
+                    <th>Classe</th>
+                    <th>Tipo</th>
+                    <th>Ação</th>
+                    
+                  </tr>
+                  <tr>
+                    <td>Médio 1</td>
+                  
+                    <td>Turma</td>
+                
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+      
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                    
+                  </tr>
+                  <tr>
+                    <td>Médio 2</td>
+                    
+                    <td>Turma</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+                    
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                  </tr>
+                  <tr>
+                    <td>Médio 3</td>
+                    
+                    <td>Turma</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                    
+                    </tr>
+                    
+                  
+                  </table>
+                  <button class="btn btn-success" id="Add">Adicionar Classe</button><br><br>
+              </div>
+              <div id="table-materias">
+              <H1>Matérias</h1>
+                  <table border='1' class='table table-hover  table-striped table-bordered'>
+                  <thead class="thead-light">
+                  <tr>
+                    <th>Matéria</th>
+                    <th>Tipo</th>
+                    <th>Ação</th>
+                    
+                  </tr>
+                  <tr>
+                    <td>Português</td>
+                  
+                    <td>Matéria</td>
+                
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+      
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                    
+                  </tr>
+                  <tr>
+                    <td>Matemática</td>
+                    
+                    <td>Matéria</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+                    
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                  </tr>
+                  <tr>
+                    <td>Biologia</td>
+                    
+                    <td>Matéria</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                    
+                    </tr>
+                    
+                  
+                  </table>
+                  <button class="btn btn-success" id="Add">Adicionar Matéria</button><br><br>
+              </div>
+              
+              <div id="table-horarios">
+                  <H1>Horários</h1>
+                  <table border='1' class='table table-hover  table-striped table-bordered'>
+                  <thead class="thead-light">
+                  <tr>
+                    <th>Horário</th>
+                    <th>Tipo</th>
+                    <th>Ação</th>
+                    
+                  </tr>
+                  <tr>
+                    <td>Segunda-feira</td>
+                  
+                    <td>Horário</td>
+                
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+      
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                    
+                  </tr>
+                  <tr>
+                    <td>Terça-feira</td>
+                    
+                    <td>Horário</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+                    
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                  </tr>
+                  <tr>
+                    <td>Quarta-feira</td>
+                    
+                    <td>Horário</td>
+                    <td><button class="btn btn-danger" id="delete">Excluir</button>
+
+                    <button class="btn btn-success" id="Alt">Alterar</button></td>
+                    
+                    </tr>
+                    
+                  
+                  </table>
+                  <button class="btn btn-success" id="Add">Adicionar Horário</button><br><br>
               </div>
           </div>
       </div>   

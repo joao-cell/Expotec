@@ -37,12 +37,11 @@ $result = $conn->query($sql);
 <html lang="pt-br">
 <head>
 <style>
-nav a:hover{
-
-  background-color: #324F9A!important;
-  border-radius: 9px;
-}
-#logout button:hover{
+    nav a:hover{
+        background-color: #324F9A!important;
+        border-radius: 9px;
+    }
+    #logout button:hover{
             background-color:  #324f9a ;
             border-radius: 4px;
             
@@ -158,20 +157,20 @@ nav a:hover{
                 box-shadow: 0px 1px 4px grey;
                 color: gray;
         }
-        .btn{
+        #delete{
             background-color: #F72427;
             width: 7%;
             
         }
-        .btn:hover{
+        #delete:hover{
             background-color: #aa0000;
         }
-        .btn{
+        #alterar{
             background-color: #1963f7;
             width: 7%;
 
         }
-        .alterar:hover{
+        #alterar:hover{
             background-color: #164dbf;
 
         }
@@ -205,7 +204,11 @@ nav a:hover{
        <a class="nav-link"  style="color: white" href="../admin/cadastro.php">Cadastro</a>
      </li>
    </ul>
-     <div id="logout"><button type="submit" name="sair" class="btn">Sair</button></div>
+   <div id="logout">
+        <form method="post">
+          <div><button type="submit" name="sair" class="btn">Sair</button></div>
+        </form>
+    </div>
  </div>
 </nav>
 <div id="texto">

@@ -78,7 +78,7 @@ $result = $conn->query($sql);
                   width: 25%;
                 }
                 .container{
-                  position: fixed;
+                  position: absolute;
                   left: 31%;
                   top: 20%;
                   border-style: none ;

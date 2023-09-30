@@ -1,5 +1,8 @@
 <?php
-
+$hostname="localhost";
+$username = "root";
+$password = "";
+$dbName="expotec_db";
 session_set_cookie_params(0);
 session_start();
 if (empty($_SESSION['user'])) {
@@ -138,164 +141,99 @@ nav a:hover{
           <div class="col mt-5">
             <center>
             <form method="POST">
-            <input type="text" size="35px" placeholder="Nome" >
-              <select>
+            
+              <select name="tabel">
                   <option>Tipo</option>
-                  <option>Administradores</option>
-                  <option>Professores</option>
-                  <option>Alunos</option>
-                  <option>Turmas</option>
+                  <option value="administradores">Administradores</option>
+                  <option value="professores">Professores</option>
+                  <option value="alunos">Alunos</option>
+                  <option value="turmas">Turmas</option>
                   <option>Horários</option>
-                  <option>Matérias</option>
+                  <option value="materias">Matérias</option>
               </select>
               
-              <button type="submit" class="btn" id="src">Pesquisar</button>
+              <button type="submit" class="btn" name="btn_enviar" id="src">Pesquisar</button>
               </form>
               </center>
               
               <div id="table-alunos">
-              <H1>Alunos</h1>
+              
+                  <?php 
+                  if(isset($_POST['btn_enviar'])){
+                    $table = $_POST['tabel'];
+                    if(($table=="administradores")||($table=="professores")||($table=="alunos")){
+                   $conn = mysqli_connect($hostname,$username,$password,$dbName);
+                   if ($conn->connect_error) {
+                       die("Erro na conexão: " . $conn->connect_error);
+                   }
+                  $query = "SELECT * FROM $table";
+                  $result1 = mysqli_query($conn,$query);
+                  echo "<H1>$table</h1>
                   <table border='1' class='table table-hover  table-striped table-bordered'>
-                  <thead class="thead-light">
+                  <thead class= thead-light'>
                   <tr>
                     <th>Nome</th>
                     <th>Senha</th>
                     <th>Tipo</th>
                     <tH>Ação</th>
-                  </tr>
+                  </tr>";
+                  while($row1= mysqli_fetch_array($result1)):;
+                  echo "
                   <tr>
-                    <td>Juquinha</td>
-                    <td>123</td>
-                    <td>Aluno</td>
-                
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-      
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                    
-                  </tr>
-                  </table>
-                  <button class="btn btn-success" id="Add">Adicionar Aluno</button><br><br>
-              </div>
-
-              <div id="table-adm">
-              <H1>Administradores</h1>
-                  <table border='1' class='table table-hover  table-striped table-bordered'>
-                  <thead class="thead-light">
-                  <tr>
-                    <th>Nome</th>
-                    <th>Senha</th>
-                    <th>Tipo</th>
-                    <tH>Ação</th>
-                  </tr>
-                  <tr>
-                    <td>Bruno</td>
-                    <td>123</td>
-                    <td>Administrador</td>
-                
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-      
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                    
-                  </tr>
+                  <td>".$row1['user'] . "</td>
+                  <td>".$row1['senha'] . "</td>
+                  <td>$table</td>
+              
+                  <td><button class='btn btn-danger' id='delete'>Excluir</button>
+    
+                  <button class='btn btn-success' id='Alt'>Alterar</button></td>
                   
-                  </table>
-                  <button class="btn btn-success" id="Add">Adicionar Administrador</button><br><br>
-              </div>
-              <div id="table-prof">
-              <H1>Professores</h1>
-                  <table border='1' class='table table-hover  table-striped table-bordered'>
-                  <thead class="thead-light">
-                  <tr>
-                    <th>Nome</th>
-                    <th>Senha</th>
-                    <th>Tipo</th>
-                    <tH>Ação</th>
-                  </tr>
-                  <tr>
-                    <td>Kleber</td>
-                    <td>123</td>
-                    <td>Professor</td>
-                
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-      
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                    
-                  </tr>
-
-                  
-                  </table>
-                  <button class="btn btn-success" id="Add">Adicionar Professor</button><br><br>
-              </div>
-              <div id="table-turmas">
-              <H1>Turmas</h1>
-                  <table border='1' class='table table-hover  table-striped table-bordered'>
-                  <thead class="thead-light">
+                </tr>";
+            endwhile;
+            echo "</table>
+            <button class='btn btn-success' id='Add'>Adicionar $table</button><br><br>";
+            $conn->close();
+          }
+            if(($table=="materias")||($table=="turmas")){
+            $conn = mysqli_connect($hostname,$username,$password,$dbName);
+            if ($conn->connect_error) {
+                die("Erro na conexão: " . $conn->connect_error);
+            }
+           $query = "SELECT * FROM $table";
+           $result1 = mysqli_query($conn,$query);
+           echo "<H1>$table</h1>
+           <table border='1' class='table table-hover  table-striped table-bordered'>
+                  <thead class='thead-light'>
                   <tr>
                     <th>Classe</th>
                     <th>Tipo</th>
                     <th>Ação</th>
                     
-                  </tr>
+                  </tr>";
+           while($row1= mysqli_fetch_array($result1)):;
+           echo "
                   <tr>
-                    <td>Médio 1</td>
+                    <td>".$row1['nome'] . "</td>
                   
-                    <td>Turma</td>
-                
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-      
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                    
-                  </tr>
-                  </table>
-                  <button class="btn btn-success" id="Add">Adicionar Classe</button><br><br>
+                    <td>$table</td>
+                    <td><button class='btn btn-danger' id='delete'>Excluir</button>
+    
+                  <button class='btn btn-success' id='Alt'>Alterar</button></td>
+           
+         </tr>
+        ";
+        endwhile;
+        echo "</table>
+        <button class='btn btn-success' id='Add'>Adicionar $table</button><br><br>";
+        $conn->close();
+        }
+          }
+            
+                  ?>
               </div>
-              <div id="table-materias">
-              <H1>Matérias</h1>
-                  <table border='1' class='table table-hover  table-striped table-bordered'>
-                  <thead class="thead-light">
-                  <tr>
-                    <th>Matéria</th>
-                    <th>Tipo</th>
-                    <th>Ação</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>Português</td>
-                  
-                    <td>Matéria</td>
-                
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-      
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                    
-                  </tr>
-                  
-                  </table>
-                  <button class="btn btn-success" id="Add">Adicionar Matéria</button><br><br>
-              </div>
+
               
-              <div id="table-horarios">
-                  <H1>Horários</h1>
-                  <table border='1' class='table table-hover  table-striped table-bordered'>
-                  <thead class="thead-light">
-                  <tr>
-                    <th>Horário</th>
-                    <th>Tipo</th>
-                    <th>Ação</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>Segunda-feira</td>
                   
-                    <td>Horário</td>
-                
-                    <td><button class="btn btn-danger" id="delete">Excluir</button>
-      
-                    <button class="btn btn-success" id="Alt">Alterar</button></td>
-                    
-                  </tr>            
-                  </table>
-                  <button class="btn btn-success" id="Add">Adicionar Horário</button><br><br>
               </div>
           </div>
       </div>   

@@ -126,6 +126,25 @@
           height: 39px;
 
         }
+        #enviar{
+            background-color: #244393;
+            color: white;
+            width: 60%;
+            padding: 5px;
+            border-style: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+
+        }
+        #enviar:hover{
+          background-color: #192f69;
+        }
+        #alterar{
+          width: 60%;
+            padding: 5px;
+            border-style: none;
+
+        }
 </style>
 
 
@@ -340,10 +359,10 @@ if (isset($_POST['sair'])) {
                     <br>
                     
                     <div class="mb-3">
-                        <button type="submit" name="btn_enviar" class="btn_enviar">Enviar</button>
+                        <button type="submit" name="btn_enviar" class="btn_enviar" id="enviar">Enviar</button>
                         <br>
                         <br>
-                        <button type="submit" name="btn_update" class="btn_update">alterar nota ja existente</button>
+                        <button type="submit" name="btn_update" class="btn_update" id="alterar">Alterar</button>
                     </div>
                     
                     

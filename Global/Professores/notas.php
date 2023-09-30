@@ -73,7 +73,7 @@
       .mb-3 button:hover {
             background-color: #192f69;
         }
-        <style>
+        
           html,body{
 
                   width:100vw;

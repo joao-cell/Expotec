@@ -206,9 +206,7 @@ nav a:hover{
        <a class="nav-link"  style="color: white" href="../admin/cadastro.php">Cadastro</a>
      </li>
    </ul>
-   <form method="post">
      <div id="logout"><button type="submit" name="sair" class="btn">Sair</button></div>
- </form>
  </div>
 </nav>
 <div id="texto">
@@ -220,7 +218,7 @@ nav a:hover{
 <div class="conteiner">
     <div class="row">
         <div class="col mt-5">
-            <form method="POST">
+            <form action=' ../../php/inserirAviso.php ' method="post">
                 <h1>Titulo:<br>
                     
                     <input type="text" name="titulo" placeholder="Escreva o título"><br><br>
@@ -241,7 +239,7 @@ nav a:hover{
                 <center>
                     <button type="submit" name="btn_enviar" class="btn">Enviar Mensagem</button>
                 </center>
-            </form>
+                </form>
         </div>
     </div>
 </div>
@@ -278,54 +276,56 @@ nav a:hover{
 
 
                 <?php
-            if (mysqli_num_rows($result_avisos) > 0) {
-            while ($row_aviso = mysqli_fetch_assoc($result_avisos)) {
-                $titulo = $row_aviso['titulo'];
-                $data_aviso = $row_aviso['data_aviso'];
-                $aviso = $row_aviso['aviso'];
+if (mysqli_num_rows($result_avisos) > 0) {
+    while ($row_aviso = mysqli_fetch_assoc($result_avisos)) {
+        $titulo = $row_aviso['titulo'];
+        $data_aviso = $row_aviso['data_aviso'];
+        $aviso = $row_aviso['aviso'];
+        $turma_id = $row_aviso['turma_id'];
+        $id = $row_aviso['id'];
 
-                echo "<h2>$titulo</h2>";
-                echo "<strong>  Data: </strong> $data_aviso</p>";
-                echo "<p>$aviso</p>";
-                echo "<button id='delete' class='btn'>Excluir</button>";
-                echo " ";
-                echo "<button id='alterar' class='btn'>Alterar</button>";
-                echo "<hr>";
-            }
-                }
-            else {
-                echo "<p>Nenhum aviso disponível para esta turma.</p>";
-            }
+
+        $sql_turma = "SELECT nome FROM turmas WHERE id = $turma_id";
+        $result_turma = mysqli_query($conn, $sql_turma);
+
+        if ($result_turma && mysqli_num_rows($result_turma) > 0) {
+            $row_turma = mysqli_fetch_assoc($result_turma);
+            $turma_nome = $row_turma['nome'];
+        } else {
+
+            $turma_nome = "Turma não encontrada";
+        }
+
+        echo "<h2>$titulo</h2>";
+        echo "<strong>  Data: </strong> $data_aviso <b>Turma:</b> $turma_nome</p>";
+        echo "<p>$aviso</p>";
+        echo "<form method='post' action='../../phpremoverAviso.php'>";
+        echo "<input type='hidden' name='id' value='$id'>";
+        echo "<button type='button' class='btn' onclick='confirmarRemocao($id)'>Excluir</button>";
+        echo "</form>";
+        echo " ";
+        echo "<button id='alt' class='btn'>Alterar</button>";
+        echo ""
+        echo "<hr>";
+    }
+} else {
+    echo "<p>Nenhum aviso disponivel</p>";
+}
 
             mysqli_close($conn);
             ?>  
         </div>
     </div>
 </div>
-
+<script>
+function confirmarRemocao(id) {
+    if (confirm("Você realmente deseja remover esta mensagem?")) {
+        // O usuário clicou em "Sim", redirecionar para remover_aviso.php
+        window.location.href = "../../php/removerAviso.php?id=" + id;
+    } else {
+        // O usuário clicou em "Não", não faz nada
+    }
+}
+</script>
 </body>
 </html>
-
-<?php
-if (isset($_POST['btn_enviar'])) {
-    // Capturar os dados do formulário
-    $titulo = $_POST['titulo'];
-    $descricao = $_POST['descricao'];
-    $sala_id = $_POST['sala']; // A sala selecionada no ComboBox
-
-    // Inserir o aviso no banco de dados (substitua com sua lógica de inserção)
-    $sql_insert_aviso = "INSERT INTO avisos (aviso, data_aviso, turma_id, titulo) VALUES (?, NOW(), ?, ?)";
-    $stmt = $conn->prepare($sql_insert_aviso);
-    $stmt->bind_param("sds", $descricao, $sala_id, $titulo);
-
-    if ($stmt->execute()) {
-        echo "Aviso inserido com sucesso!";
-    } else {
-        echo "Erro ao inserir o aviso: " . $stmt->error;
-    }
-
-    // Fechar a declaração e a conexão
-    $stmt->close();
-    $conn->close();
-}
-?>

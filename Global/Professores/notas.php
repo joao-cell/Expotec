@@ -357,11 +357,12 @@ if (isset($_POST['sair'])) {
                       die("Erro na conexão: " . $conn->connect_error);
                   }
                   
-                $aluno = $_POST['alunoss'];
-                $materia = $_POST['materiass'];
-                $bimestre = $_POST['bimestress'];
-                $nota = $_POST['notass'];
-                $sql = "INSERT INTO notas (id,alunos_id materias_id, bimestres_id, nota) VALUES (NULL,'$aluno','$materia','$bimestre','$nota')";
+                  $aluno = $_POST['alunoss'];
+                  $materia = $_POST['materiass'];
+                  $bimestre = $_POST['bimestress'];
+                  $nota = $_POST['notass'];
+                  
+                  $sql = "INSERT INTO notas (alunos_id, materias_id, bimestres_id, nota) VALUES ('$aluno', '$materia', '$bimestre', '$nota')";
                 
                 if ($conn->query($sql) === true) {
 
@@ -369,33 +370,37 @@ if (isset($_POST['sair'])) {
               } else {
                   echo "Erro ao inserir dados: " . $conn->error;
               }
-              if (isset($_POST['btn_update'])) {
-
-                if($_SERVER["REQUEST_METHOD"] === "POST"){
-                    
-                  $conn = mysqli_connect($hostname,$username,$password,$dbName);
-                  if ($conn->connect_error) {
-                    die("Erro na conexão: " . $conn->connect_error);
-                }
-                
-              $aluno = $_POST['alunoss'];
-              $materia = $_POST['materiass'];
-              $bimestre = $_POST['bimestress'];
-              $nota = $_POST['notass'];
-              $sql = "UPDATE notas SET nota='$nota' where bimestres_id='$bimestre', materias_id='$materia',alunos_id='$aluno'";
               
-              if ($conn->query($sql) === true) {
-
-                echo "Dados atualizados com sucesso!";
-            } else {
-                echo "Erro ao atualizar dados: " . $conn->error;
-            }
-              }
-              
-            }
             $conn->close();
             }
+            
           }
+          if (isset($_POST['btn_update'])) {
+
+            if($_SERVER["REQUEST_METHOD"] === "POST"){
+                
+              $conn = mysqli_connect($hostname,$username,$password,$dbName);
+              if ($conn->connect_error) {
+                die("Erro na conexão: " . $conn->connect_error);
+            }
+            
+            $aluno = $_POST['alunoss'];
+            $materia = $_POST['materiass'];
+            $bimestre = $_POST['bimestress'];
+            $nota = $_POST['notass'];
+            
+            $sql = "UPDATE notas SET nota='$nota' WHERE bimestres_id='$bimestre' AND materias_id='$materia' AND alunos_id='$aluno'";
+          
+          if ($conn->query($sql) === true) {
+
+            echo "Dados atualizados com sucesso!";
+        } else {
+            echo "Erro ao atualizar dados: " . $conn->error;
+        }
+        $conn->close();
+          }
+          
+        }
               
                     ?>
                   

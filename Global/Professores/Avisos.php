@@ -15,7 +15,6 @@ if (isset($_POST['sair'])) {
     header('Location: ../../Index.php'); 
     exit();
 }
-
 // Conexão com o banco de dados (substitua com suas informações de conexão)
 $servername = "localhost";
 $username = "root";
@@ -38,12 +37,11 @@ $result = $conn->query($sql);
 <html lang="pt-br">
 <head>
 <style>
-nav a:hover{
-
-  background-color: #324F9A!important;
-  border-radius: 9px;
-}
-#logout button:hover{
+    nav a:hover{
+        background-color: #324F9A!important;
+        border-radius: 9px;
+    }
+    #logout button:hover{
             background-color:  #324f9a ;
             border-radius: 4px;
             
@@ -186,28 +184,32 @@ nav a:hover{
 <script src="js/bootstrap.bundle.min.js"></script>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393">
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="index.PHP">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="../professores/notas.php">Notas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="../professores/avisos.php">Avisos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="../professores/horarios.php">Horários</a>
-            </li>
-        </ul>
-        <div id="logout">
-            <form method="post">
-                <div><button type="submit" name="sair" class="btn">Sair</button></div>
-            </form>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393;">
+ 
+ <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+   <ul class="navbar-nav mr-auto">
+     <li class="nav-item">
+       <a class="nav-link"  style="color: white" href="../admin/index.php">Inicio</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" style="color: white" href="../admin/notas.php">Notas</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link"  style="color: white" href="../admin/avisos.php">Avisos</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link"  style="color: white" href="../admin/horarios.php">Horários</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link"  style="color: white" href="../admin/cadastro.php">Cadastro</a>
+     </li>
+   </ul>
+   <div id="logout">
+        <form method="post">
+          <div><button type="submit" name="sair" class="btn">Sair</button></div>
+        </form>
     </div>
+ </div>
 </nav>
 <div id="texto">
     <center>
@@ -218,7 +220,7 @@ nav a:hover{
 <div class="conteiner">
     <div class="row">
         <div class="col mt-5">
-            <form method="POST">
+            <form action=' ../../php/inserirAviso.php ' method="post">
                 <h1>Titulo:<br>
                     
                     <input type="text" name="titulo" placeholder="Escreva o título"><br><br>
@@ -239,7 +241,7 @@ nav a:hover{
                 <center>
                     <button type="submit" name="btn_enviar" class="btn">Enviar Mensagem</button>
                 </center>
-            </form>
+                </form>
         </div>
     </div>
 </div>
@@ -248,82 +250,62 @@ nav a:hover{
         <div class="col mt-5">
 
             <?php
-
-            $host = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "expotec_db";
-
-            $conn = mysqli_connect($host, $username, $password, $database);
-
-            if (!$conn) {
-                die("Erro na conexão com o banco de dados: " . mysqli_connect_error());
-            }
-
-            
-
-            $sql_avisos = "SELECT * FROM avisos WHERE 1 ORDER BY data_aviso DESC";
-
-            $result_avisos = mysqli_query($conn, $sql_avisos);
-
-
-
-            if (!$result_avisos) {
-                die("Erro ao consultar os avisos da turma: " . mysqli_error($conn));
-            }
+                    $sql_avisos = "SELECT * FROM avisos WHERE 1 ORDER BY data_aviso DESC";
+                    $result_avisos = mysqli_query($conn, $sql_avisos);
+                    if (!$result_avisos) {
+                        die("Erro ao consultar os avisos da turma: " . mysqli_error($conn));
+                    }
             ?>
-
-
-
                 <?php
-            if (mysqli_num_rows($result_avisos) > 0) {
+        if (mysqli_num_rows($result_avisos) > 0) {
             while ($row_aviso = mysqli_fetch_assoc($result_avisos)) {
                 $titulo = $row_aviso['titulo'];
                 $data_aviso = $row_aviso['data_aviso'];
                 $aviso = $row_aviso['aviso'];
+                $turma_id = $row_aviso['turma_id'];
+                $id = $row_aviso['id'];
+
+
+                $sql_turma = "SELECT nome FROM turmas WHERE id = $turma_id";
+                $result_turma = mysqli_query($conn, $sql_turma);
+
+                if ($result_turma && mysqli_num_rows($result_turma) > 0) {
+                    $row_turma = mysqli_fetch_assoc($result_turma);
+                    $turma_nome = $row_turma['nome'];
+                } else {
+
+                    $turma_nome = "Turma não encontrada";
+                }
 
                 echo "<h2>$titulo</h2>";
-                echo "<strong>  Data: </strong> $data_aviso</p>";
+                echo "<strong>  Data: </strong> $data_aviso <b>Turma:</b> $turma_nome</p>";
                 echo "<p>$aviso</p>";
-                echo "<button id='delete' class='btn'>Excluir</button>";
+                echo "<form method='post' action='../../phpremoverAviso.php'>";
+                echo "<input type='hidden' name='id' value='$id'>";
+                echo "<button type='button' class='btn'  onclick='confirmarRemocao($id)' style='width: 10%;  background-color: #F72427;'>Excluir</button></form>";
                 echo " ";
-                echo "<button id='alterar' class='btn'>Alterar</button>";
+                echo "<button  class='btn' style='width: 10%;  background-color: #1963f7;'>Alterar</button>";
+                echo " ";
                 echo "<hr>";
-            }
+    }
+                } else {
+                    echo "<p>Nenhum aviso disponivel</p>";
                 }
-            else {
-                echo "<p>Nenhum aviso disponível para esta turma.</p>";
-            }
 
-            mysqli_close($conn);
-            ?>  
+                            mysqli_close($conn);
+                ?>  
         </div>
     </div>
 </div>
-
+<script>
+function confirmarRemocao(id) {
+    if (confirm("Você realmente deseja remover esta mensagem?")) {
+        // O usuário clicou em "Sim", redirecionar para remover_aviso.php
+        window.location.href = "../../php/removerAviso.php?id=" + id;
+    } else {
+        // O usuário clicou em "Não", não faz nada
+    }
+}
+</script>
 </body>
 </html>
-
-<?php
-if (isset($_POST['btn_enviar'])) {
-    // Capturar os dados do formulário
-    $titulo = $_POST['titulo'];
-    $descricao = $_POST['descricao'];
-    $sala_id = $_POST['sala']; // A sala selecionada no ComboBox
-
-    // Inserir o aviso no banco de dados (substitua com sua lógica de inserção)
-    $sql_insert_aviso = "INSERT INTO avisos (aviso, data_aviso, turma_id, titulo) VALUES (?, NOW(), ?, ?)";
-    $stmt = $conn->prepare($sql_insert_aviso);
-    $stmt->bind_param("sds", $descricao, $sala_id, $titulo);
-
-    if ($stmt->execute()) {
-        echo "Aviso inserido com sucesso!";
-    } else {
-        echo "Erro ao inserir o aviso: " . $stmt->error;
-    }
-
-    // Fechar a declaração e a conexão
-    $stmt->close();
-    $conn->close();
-}
-?>

@@ -163,9 +163,10 @@ if (mysqli_num_rows($result_avisos) > 0) {
       $titulo = $row_aviso['titulo'];
       $data_aviso = $row_aviso['data_aviso'];
       $aviso = $row_aviso['aviso'];
+      $criador = $row_aviso['criador'];
    
       echo "<h2>$titulo</h2>";
-      echo "<strong>  Data: </strong> $data_aviso</p>";
+      echo "<strong>  Data: </strong> $data_aviso  <b>Criador:</b> $criador</p>";
       echo "<p>$aviso</p>";
       echo "<hr>";
   }

@@ -79,6 +79,7 @@ nav a:hover{
     </div>
   </div>
 </nav>
+<center><h1><br>Horários de Todas as Turmas</h1></center>
 <?php
 
 $host = "localhost";
@@ -133,7 +134,7 @@ while ($rowTurma = mysqli_fetch_assoc($resultTurmas)) {
     echo "<div class='row'>";
     echo "<div class='col mt-5'>";
     echo "<hr>";
-    echo "<h1>$nomeTurma</h1>";
+    echo "<h2>$nomeTurma</h2>";
     echo "<br>";
     if (mysqli_num_rows($result) > 0) {
         $currentDay = null; // Variável para rastrear o dia atual

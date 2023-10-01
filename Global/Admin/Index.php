@@ -16,68 +16,62 @@ if (isset($_POST['sair'])) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+<head>
+    <!-- Inclua o Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="../css/bootstrap.min.css"
-      crossorigin="anonymous"
-    />
+<!-- Inclua o jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Inclua o Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+
+<!-- Inclua o Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="../css/bootstrap.min.css" crossorigin="anonymous">
     <title>FortecHub</title>
-  </head>
-  <body>
-    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<script src="js/bootstrap.bundle.min.js"></script>
 
-    <!-- Navbar -->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark"
-      style="background-color: #244393"
-    >
-      <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393;">
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" style="color: white" href="index.php"
-              >Inicio</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../Admin/notas.php"
-              >Notas</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../Admin/avisos.php"
-              >Avisos</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              style="color: white"
-              href="../Admin/horarios.php"
-              >Horários</a
-            >
-          </li>
-          <li class="nav-item">
-          <a 
-              class="nav-link"  
-              style="color: white" 
-              href="../admin/cadastro.php">
-              Cadastro</a>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="../admin/index.php">Inicio</a>
+            </li>
+            <li class="nav-item">
+            <div class="dropdown nav-item">
+  <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Notas
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Ver Notas</a>
+    <a class="dropdown-item" href="#">Inserir Nota</a>
+  </div>
+</div>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="../admin/avisos.php">Avisos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="../admin/horarios.php">Horários</a>
+            </li>
         </ul>
-      </div>
-      <form method="post">
-        <div id="logout"><button type="submit" name="sair" class="btn">Sair</button></div>
-    </form>
-    </nav>
+        <div id="logout">
+        <form method="post">
+          <div><button type="submit" name="sair" class="btn">Sair</button></div>
+        </form>
+    </div>
+    </div>
+</nav>
     <div class="container">
       <div class="row">
         <div class="col mt-5"></div>

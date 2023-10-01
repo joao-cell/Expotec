@@ -61,10 +61,6 @@ nav a:hover{
 .col button:hover{
         background-color: #192f69 ;
     }
-#table-alunos{
-        
-
-}
 #delete{
       background-color: #F72427;
 }
@@ -132,10 +128,12 @@ nav a:hover{
     </div>
   </div>
 </nav>
+
 <center>
 <h1 style="padding-top: 20px;">Usuários</h1>
-<h2 style="font-size: 18px; color: gray;">Adicione, altere ou exclua usuários, turmas, matérias e horários!</h2>
+<h2 style="font-size: 18px; color: gray;">Adicione, Alterer ou exclua Turmas, Alunos, Professores, Adminstradores, Horarios e Matérias</h2>
 </center>
+
 <div class="container">
       <div class="row">
           <div class="col mt-5">
@@ -177,19 +175,24 @@ nav a:hover{
                     <th>Tipo</th>
                     <tH>Ação</th>
                   </tr>";
-                  while($row1= mysqli_fetch_array($result1)):;
-                  echo "
-                  <tr>
-                  <td>".$row1['user'] . "</td>
-                  <td>".$row1['senha'] . "</td>
-                  <td>$table</td>
-              
-                  <td><button class='btn btn-danger' id='delete'>Excluir</button>
-    
-                  <button class='btn btn-success' id='Alt'>Alterar</button></td>
-                  
-                </tr>";
-            endwhile;
+                  while ($row1 = mysqli_fetch_array($result1)) :
+                    $id = $row1['id']; // Obtém o valor do ID da linha atual
+                    echo "
+                    <tr>
+                        <td>" . $row1['user'] . "</td>
+                        <td>" . $row1['senha'] . "</td>
+                        <td>$table</td>
+                        <td>
+                            <form method='post' action='../../php/removerAviso.php'>
+                                <input type='hidden' name='id' value='$id'>
+                                <input type='hidden' name='tabela' value='$table'>
+                                <button type='button' class='btn' onclick='confirmarRemocao($id)' class='btn btn-danger' background-color: #F72427;'>Excluir</button>
+                            </form>
+                            <button class='btn btn-success' id='Alt'>Alterar</button>
+                        </td>
+                    </tr>";
+                endwhile;
+                
             echo "</table>
             <button class='btn btn-success' id='Add'>Adicionar $table</button><br><br>";
             $conn->close();
@@ -238,3 +241,21 @@ nav a:hover{
           </div>
       </div>   
 </div>
+<?php
+echo "<script>";
+echo "var table = '" . $table . "';";
+echo "</script>";
+?>
+<script>
+function confirmarRemocao(id) {
+    if (confirm("Você realmente deseja remover esta Registro")) {
+      var url = "../../php/removerCadastro.php?id=" + id + "&tabela=" + table;
+        window.location.href = url;
+    } else {
+        // O usuário clicou em Não, não faz nada
+    }
+}
+
+</script>
+</body>
+</html>

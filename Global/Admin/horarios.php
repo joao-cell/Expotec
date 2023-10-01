@@ -33,6 +33,10 @@ nav a:hover{
   height: 39px;
 
 }
+.H1{
+  
+
+}
 </style>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -100,7 +104,7 @@ if (!$resultTurmas) {
 while ($rowTurma = mysqli_fetch_assoc($resultTurmas)) {
     $nomeTurma = $rowTurma['nome_turma'];
     
-    echo "<h1>$nomeTurma</h1>"; // Adicione o título da sala
+     // Adicione o título da sala
     
     $sql = "SELECT
     horarios.*,
@@ -128,7 +132,9 @@ while ($rowTurma = mysqli_fetch_assoc($resultTurmas)) {
     echo "<div class='container'>";
     echo "<div class='row'>";
     echo "<div class='col mt-5'>";
-    
+    echo "<hr>";
+    echo "<h1>$nomeTurma</h1>";
+    echo "<br>";
     if (mysqli_num_rows($result) > 0) {
         $currentDay = null; // Variável para rastrear o dia atual
         echo "<table border='1' class='table table-hover table-striped table-bordered'>";
@@ -161,6 +167,7 @@ while ($rowTurma = mysqli_fetch_assoc($resultTurmas)) {
         echo '</td></tr>';
         echo '</tbody>';
         echo '</table>';
+        echo "<HR>";
     } else {
         echo "<p>Nenhum horário disponível para a turma $nomeTurma.</p>";
     }

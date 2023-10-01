@@ -79,7 +79,7 @@ $result = $conn->query($sql);
                 }
                 .container{
                   position: absolute;
-                  left: 31%;
+                  left: 31%;    
                   top: 20%;
                   border-style: none ;
                   padding-bottom: 25px;

@@ -102,7 +102,7 @@ if (isset($_POST['btn_enviar'])) {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuRegistros">
                         <a class="dropdown-item" href="../Admin/Listarcadastros.php">Listar</a>
-                        <a class="dropdown-item" href="../Admin/Listarcadastros.php">Inserir</a>
+                        <a class="dropdown-item" href="../Admin/FormUser.php">Inserir</a>
                     </div>
                 </div>
             </li>

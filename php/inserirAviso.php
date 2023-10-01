@@ -18,11 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulo = $_POST["titulo"];
     $descricao = $_POST["descricao"];
     $sala = $_POST["sala"];
-
+    session_start();
+    $user = $_SESSION['user'];
     
-    $sql = "INSERT INTO avisos (titulo, aviso, turma_id,`data_aviso`) VALUES (?, ?, ?, now())";
+    $sql = "INSERT INTO avisos (titulo, aviso, turma_id,`data_aviso`,criador) VALUES (?, ?, ?, now(), ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssi", $titulo, $descricao, $sala);
+    $stmt->bind_param("ssis", $titulo, $descricao, $sala, $user);
 
     if ($stmt->execute()) {
     

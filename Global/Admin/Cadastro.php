@@ -120,6 +120,9 @@ nav a:hover{
       <li class="nav-item">
         <a class="nav-link"  style="color: white" href="../admin/cadastro.php">Cadastro</a>
       </li>
+      <li class="nav-item">
+       <a class="nav-link"  style="color: white" href="../admin/addCadastro.php">Adicionar</a>
+     </li>
     </ul>
     <div id="logout">
         <form method="post">
@@ -163,7 +166,7 @@ nav a:hover{
                    $conn = mysqli_connect($hostname,$username,$password,$dbName);
                    if ($conn->connect_error) {
                        die("Erro na conexão: " . $conn->connect_error);
-                   }
+                  }
                   $query = "SELECT * FROM $table";
                   $result1 = mysqli_query($conn,$query);
                   echo "<H1>$table</h1>
@@ -194,7 +197,9 @@ nav a:hover{
                 endwhile;
                 
             echo "</table>
-            <button class='btn btn-success' id='Add'>Adicionar $table</button><br><br>";
+            <form method='POST' action='addCadastro.php'>
+            <button class='btn btn-success' id='Add'>Adicionar $table</button><br><br>
+            </form>";
             $conn->close();
           }
             if(($table=="materias")||($table=="turmas")){

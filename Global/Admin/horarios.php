@@ -73,6 +73,9 @@ nav a:hover{
       <li class="nav-item">
         <a class="nav-link"  style="color: white" href="../admin/cadastro.php">Cadastro</a>
       </li>
+      <li class="nav-item">
+       <a class="nav-link"  style="color: white" href="../admin/addCadastro.php">Adicionar</a>
+     </li>
     </ul>
     <div id="logout">
           <div><button type="submit" name="sair" class="btn">Sair</button></div>

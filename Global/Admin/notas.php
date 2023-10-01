@@ -1,8 +1,9 @@
-<?php 
+<?php
+
 session_set_cookie_params(0);
 session_start();
 if (empty($_SESSION['user'])) {
-    header('Location: ../login/loginAlunos.php'); 
+    header('Location: ../login/loginAdmin.php'); 
     exit(); 
 }
 
@@ -12,118 +13,97 @@ if (isset($_POST['sair'])) {
 }
 
 ?>
-
-<style>
-    html,body{
-        width:100vw;
-        height:100vh;
-        overflow-x:hidden;
-        background-image:;
-        background-size: 100% 100%;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-    }
-    .conteiner h1{
-
-    }
-    nav a:hover{
-        background-color: #324F9A!important;
-        border-radius: 9px;
-    }
-
-    .left{
-        position: absolute;
-        top: 55px;
-        width: 20%;
-        height: 91%;
-        overflow: hidden;
-    }
-
-    #texto h1{
-
-    }
-
-    #texto h2{
-        color: gray;
-        font-size: 18px;
-    }
-    #logout button:hover{
-            background-color:  #324f9a ;
-            border-radius: 4px;
-            
-        }
-        #logout button{
-          border-radius: 4px;
-          background-color: #244393 ;
-          color: white;
-        }
-        #logout{
-          height: 39px;
-
-        }
-
-</style>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <!-- Inclua o Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<!-- Inclua o jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Inclua o jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
-<!-- Inclua o Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <!-- Inclua o Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 
-<!-- Inclua o Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Inclua o Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     
     <link rel="stylesheet" href="../css/bootstrap.min.css" crossorigin="anonymous">
     <title>FortecHub</title>
+    <style>
+        nav a:hover {
+            background-color: #324F9A!important;
+            border-radius: 9px;
+        }
+
+        #logout button:hover {
+            background-color: #324f9a;
+            border-radius: 4px;
+        }
+
+        #logout button {
+            border-radius: 4px;
+            background-color: #244393;
+            color: white;
+        }
+
+        #logout {
+            height: 39px;
+        }
+
+        .H1 {
+
+        }
+    </style>
 </head>
 <body>
-<script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
-
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393;">
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="../admin/index.php">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="../Admin/Cadastro.php">Cadastro</a>
-            </li>
-            <li class="nav-item">
-            <div class="dropdown nav-item">
-  <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Notas
-  </a>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="../Admin/Notas.php">Ver Notas</a>
-    <a class="dropdown-item" href="../Admin/InserirNotas.php">Inserir Nota</a>
-  </div>
-</div>
-
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="../admin/avisos.php">Avisos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="../admin/horarios.php">Horários</a>
-            </li>
-        </ul>
-        <div id="logout">
-        <form method="post">
-          <div><button type="submit" name="sair" class="btn">Sair</button></div>
-        </form>
-    </div>
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393;">
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white" href="../admin/index.php">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white" href="../Admin/Cadastro.php">Cadastro</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown nav-item">
+                        <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuNotas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Notas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuNotas">
+                            <a class="dropdown-item" href="../Admin/Notas.php">Ver Notas</a>
+                            <a class="dropdown-item" href="../Admin/InserirNotas.php">Inserir Nota</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white" href="../admin/avisos.php">Avisos</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown nav-item">
+                        <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuHorarios" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Horarios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuHorarios">
+                            <a class="dropdown-item" href="../Admin/horarios.php">Ver Horarios</a>
+                            <a class="dropdown-item" href="../Admin/formHorario.php">Inserir Horario</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div id="logout">
+                <form method="post">
+                    <div><button type="submit" name="sair" class="btn">Sair</button></div>
+                </form>
+            </div>
+        </div>
+    </nav>
 
 <div class="conteiner">
     <div class="row">

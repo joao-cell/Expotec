@@ -27,9 +27,14 @@
       transition: border-color 0.3s;
     }
 
+    #prof,#alunos,#adm{
+      transition:0.8s ease-in-out;
+    }
+
     #prof:hover, #alunos:hover, #adm:hover{
       border-color: #192f69;
       color: #192f69;
+      transform:translateY(-50px);
     }
 
     #prof a, #alunos a, #adm a{
@@ -49,10 +54,15 @@
       color: #192f69;
     }
 
+    #prof img + h1,
+    #alunos img + h1,
+    #adm img + h1 {transition:0.8s ease-out;}
+
     #prof img:hover + h1,
     #alunos img:hover + h1,
     #adm img:hover + h1 {
       color: #192f69;
+      transform:scale(1.1);
     }
   </style>
 </head>
@@ -63,7 +73,7 @@
         <div class="text-center">
           <a href="./Global/login/loginProfessores.php">
             <img src="./global/img/teacher.png" class="img-fluid" alt="Imagem 1">
-            <h1>Professor</h1>
+            <h1>Professores</h1>
           </a>
         </div>
       </div>

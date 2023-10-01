@@ -36,6 +36,17 @@ $result = $conn->query($sql);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+        <!-- Inclua o Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Inclua o jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Inclua o Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+
+<!-- Inclua o Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
     nav a:hover{
         background-color: #324F9A!important;
@@ -108,7 +119,7 @@ $result = $conn->query($sql);
                 color: gray;
                 font-size: 18px;
                 
-
+ 
         }
         .col button{
                
@@ -176,30 +187,49 @@ $result = $conn->query($sql);
 <script src="js/bootstrap.bundle.min.js"></script>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393;">
- 
- <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-   <ul class="navbar-nav mr-auto">
-     <li class="nav-item">
-       <a class="nav-link"  style="color: white" href="../professores/index.php">Inicio</a>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link" style="color: white" href="../professores/notas.php">Notas</a>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link"  style="color: white" href="../professores/avisos.php">Avisos</a>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link"  style="color: white" href="../professores/horarios.php">Horários</a>
-     </li>  
-    </ul>
-   <div id="logout">
-        <form method="post">
-          <div><button type="submit" name="sair" class="btn">Sair</button></div>
-        </form>
-    </div>
- </div>
-</nav>
+<nav
+      class="navbar navbar-expand-lg navbar-dark"
+      style="background-color: #244393"
+    >
+      <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" style="color: white" href="index.php"
+              >Inicio</a
+            >
+          </li>
+          <li class="nav-item">
+                    <div class="dropdown nav-item">
+                        <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuNotas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Notas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuNotas">
+                            <a class="dropdown-item" href="../professores/VerNotas.php">Ver Notas</a>
+                            <a class="dropdown-item" href="../professores/InserirNotas.php">Inserir Nota</a>
+                        </div>
+                    </div>
+                </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white" href="../professores/avisos.php"
+              >Avisos</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              style="color: white"
+              href="../professores/horarios.php"
+              >Horários</a
+            >
+          </li>
+        </ul>
+        <div id="logout">
+          <form method="post">
+            <div><button type="submit" name="sair" class="btn">Sair</button></div>
+          </form>
+      </div>
+      </div>
+    </nav>
 <div id="texto">
     <center>
         <h1>Página de Avisos</h1>
@@ -273,7 +303,6 @@ $result = $conn->query($sql);
                 echo "<input type='hidden' name='id' value='$id'>";
                 echo "<button type='button' class='btn'  onclick='confirmarRemocao($id)' style='width: 10%;  background-color: #F72427;'>Excluir</button></form>";
                 echo " ";
-                echo "<button  class='btn' style='width: 10%;  background-color: #1963f7;'>Alterar</button>";
                 echo " ";
                 echo "<hr>";
     }
@@ -290,7 +319,7 @@ $result = $conn->query($sql);
 function confirmarRemocao(id) {
     if (confirm("Você realmente deseja remover esta mensagem?")) {
         // O usuário clicou em "Sim", redirecionar para remover_aviso.php
-        window.location.href = "../../php/removerAviso.php?id=" + id;
+        window.location.href = "../../php/removerAvisoProfessor.php?id=" + id;
     } else {
         // O usuário clicou em "Não", não faz nada
     }

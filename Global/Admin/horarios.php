@@ -63,47 +63,55 @@ if (isset($_POST['sair'])) {
     <script src="js/bootstrap.bundle.min.js"></script>
 
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393;">
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="../admin/index.php">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="../Admin/Cadastro.php">Cadastro</a>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown nav-item">
-                        <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuNotas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Notas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuNotas">
-                            <a class="dropdown-item" href="../Admin/Notas.php">Ver Notas</a>
-                            <a class="dropdown-item" href="../Admin/InserirNotas.php">Inserir Nota</a>
-                        </div>
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="../admin/index.php">Inicio</a>
+            </li>
+
+            <li class="nav-item">
+                <div class="dropdown nav-item">
+                    <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuNotas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Notas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuNotas">
+                        <a class="dropdown-item" href="../Admin/Notas.php">Ver Notas</a>
+                        <a class="dropdown-item" href="../Admin/InserirNotas.php">Inserir Nota</a>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="../admin/avisos.php">Avisos</a>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown nav-item">
-                        <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuHorarios" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Horarios
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuHorarios">
-                            <a class="dropdown-item" href="../Admin/horarios.php">Ver Horarios</a>
-                            <a class="dropdown-item" href="../Admin/formHorario.php">Inserir Horario</a>
-                        </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="../admin/avisos.php">Avisos</a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown nav-item">
+                    <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuHorarios" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Horarios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuHorarios">
+                        <a class="dropdown-item" href="../Admin/horarios.php">Ver Horarios</a>
+                        <a class="dropdown-item" href="../Admin/formHorario.php">Inserir Horario</a>
                     </div>
-                </li>
-            </ul>
-            <div id="logout">
-                <form method="post">
-                    <div><button type="submit" name="sair" class="btn">Sair</button></div>
-                </form>
-            </div>
+                </div>
+            </li>
+            <!-- Novo dropdown menu "Registros" -->
+            <li class="nav-item">
+                <div class="dropdown nav-item">
+                    <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuRegistros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Registros
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuRegistros">
+                        <a class="dropdown-item" href="../Admin/Listarcadastros.php">Listar</a>
+                        <a class="dropdown-item" href="../Admin/Listarcadastros.php">Inserir</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div id="logout">
+            <div><button type="submit" name="sair" class="btn">Sair</button></div>
         </div>
-    </nav>
+    </div>
+</nav>
 <center><h1><br>Horários de Todas as Turmas</h1></center>
 <?php
 

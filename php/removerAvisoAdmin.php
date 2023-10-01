@@ -30,6 +30,6 @@ if (isset($_GET['id'])) {
     $stmt->close();
     $conn->close();
 } else {
-    echo "ID do aviso não especificado.";
+    echo "ID do aviso não especificado."; 
 }
 ?>

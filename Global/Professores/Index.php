@@ -17,6 +17,17 @@ if (isset($_POST['sair'])) {
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+        <!-- Inclua o Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Inclua o jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Inclua o Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+
+<!-- Inclua o Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8" />
     <meta
@@ -43,15 +54,21 @@ if (isset($_POST['sair'])) {
       <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="index.PHP"
+            <a class="nav-link" style="color: white" href="index.php"
               >Inicio</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white" href="../professores/notas.php"
-              >Notas</a
-            >
-          </li>
+                    <div class="dropdown nav-item">
+                        <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuNotas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Notas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuNotas">
+                            <a class="dropdown-item" href="../professores/VerNotas.php">Ver Notas</a>
+                            <a class="dropdown-item" href="../professores/InserirNotas.php">Inserir Nota</a>
+                        </div>
+                    </div>
+                </li>
           <li class="nav-item">
             <a class="nav-link" style="color: white" href="../professores/avisos.php"
               >Avisos</a
@@ -66,10 +83,12 @@ if (isset($_POST['sair'])) {
             >
           </li>
         </ul>
+        <div id="logout">
+          <form method="post">
+            <div><button type="submit" name="sair" class="btn">Sair</button></div>
+          </form>
       </div>
-      <form method="post">
-        <div id="logout"><button type="submit" name="sair" class="btn">Sair</button></div>
-    </form>
+      </div>
     </nav>
     <div class="container">
       <div class="row">

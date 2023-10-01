@@ -33,7 +33,8 @@ if (isset($_POST['sair'])) {
     
     <link rel="stylesheet" href="../css/bootstrap.min.css" crossorigin="anonymous">
     <title>FortecHub</title>
-    <style>
+
+<style>
         nav a:hover {
             background-color: #324F9A!important;
             border-radius: 9px;
@@ -59,60 +60,50 @@ if (isset($_POST['sair'])) {
         }
     </style>
 </head>
-<body>
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #244393;">
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark"
+      style="background-color: #244393"
+    >
+      <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="../admin/index.php">Inicio</a>
-            </li>
-
-            <li class="nav-item">
-                <div class="dropdown nav-item">
-                    <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuNotas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Notas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuNotas">
-                        <a class="dropdown-item" href="../Admin/Notas.php">Ver Notas</a>
-                        <a class="dropdown-item" href="../Admin/InserirNotas.php">Inserir Nota</a>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white" href="index.php"
+              >Inicio</a
+            >
+          </li>
+          <li class="nav-item">
+                    <div class="dropdown nav-item">
+                        <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuNotas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Notas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuNotas">
+                            <a class="dropdown-item" href="../professores/VerNotas.php">Ver Notas</a>
+                            <a class="dropdown-item" href="../professores/InserirNotas.php">Inserir Nota</a>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: white" href="../admin/avisos.php">Avisos</a>
-            </li>
-            <li class="nav-item">
-                <div class="dropdown nav-item">
-                    <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuHorarios" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Horarios
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuHorarios">
-                        <a class="dropdown-item" href="../Admin/horarios.php">Ver Horarios</a>
-                        <a class="dropdown-item" href="../Admin/formHorario.php">Inserir Horario</a>
-                    </div>
-                </div>
-            </li>
-            <!-- Novo dropdown menu "Registros" -->
-            <li class="nav-item">
-                <div class="dropdown nav-item">
-                    <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuRegistros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Registros
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuRegistros">
-                        <a class="dropdown-item" href="../Admin/Listarcadastros.php">Listar</a>
-                        <a class="dropdown-item" href="../Admin/Listarcadastros.php">Inserir</a>
-                    </div>
-                </div>
-            </li>
+                </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white" href="../professores/avisos.php"
+              >Avisos</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              style="color: white"
+              href="../professores/horarios.php"
+              >Horários</a
+            >
+          </li>
         </ul>
         <div id="logout">
+          <form method="post">
             <div><button type="submit" name="sair" class="btn">Sair</button></div>
-        </div>
-    </div>
-</nav>
-
+          </form>
+      </div>
+      </div>
+    </nav>
 <div class="conteiner">
     <div class="row">
         <div class="col mt-5">
@@ -123,7 +114,7 @@ if (isset($_POST['sair'])) {
             $password = "";
             $dbname = "expotec_db";
 
-            $conn = new mysqli($servername, $username, $password, $dbname); 
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
             if ($conn->connect_error) {
                 die("Falha na conexão: " . $conn->connect_error);

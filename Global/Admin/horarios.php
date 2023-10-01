@@ -71,13 +71,16 @@ nav a:hover{
                 <a class="nav-link" style="color: white" href="../admin/index.php">Inicio</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" style="color: white" href="../Admin/Cadastro.php">Cadastro</a>
+            </li>
+            <li class="nav-item">
             <div class="dropdown nav-item">
   <a class="nav-link dropdown-toggle" style="color: white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Notas
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Ver Notas</a>
-    <a class="dropdown-item" href="#">Inserir Nota</a>
+    <a class="dropdown-item" href="../Admin/Notas.php">Ver Notas</a>
+    <a class="dropdown-item" href="../Admin/InserirNotas.php">Inserir Nota</a>
   </div>
 </div>
 

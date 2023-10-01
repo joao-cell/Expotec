@@ -176,9 +176,6 @@ if (isset($_POST['btn_enviar'])) {
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href="../admin/cadastro.php">Cadastro</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="../admin/addCadastro.php">Adicionar</a>
-                </li>
             </ul>
             <div id="logout">
                 <form method="post">

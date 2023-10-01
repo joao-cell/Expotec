@@ -72,13 +72,6 @@ if (isset($_POST['sair'])) {
               href="../admin/cadastro.php">
               Cadastro</a>
           </li>
-          <li class="nav-item">
-          <a 
-              class="nav-link"  
-              style="color: white" 
-              href="../admin/addCadastro.php">
-              Adicionar</a>
-          </li>
         </ul>
       </div>
       <form method="post">

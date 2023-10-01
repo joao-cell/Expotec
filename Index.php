@@ -62,7 +62,7 @@
     #alunos img:hover + h1,
     #adm img:hover + h1 {
       color: #192f69;
-      transform:scale(1.1);
+      transform:scale(1.3);
     }
   </style>
 </head>

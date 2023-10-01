@@ -118,15 +118,32 @@ height: 39px;
                
                 <input type="text" placeholder="Senha"><br><br>
 
-                <select name="tipo">
-                    <option value="">Tipo</option>
-                    <option value="">Administrador</option>
-                    <option value="">Professor</option>
-                    <option value="">Aluno</option>
-                </select><br><br>
-                <select name="sala">
-                    <option value="">Selecionar Sala</option>
-                </select><br><br>
+                <select name="materiass" id="materiass" >
+                      
+                      
+                          <?php 
+                          $hostname="localhost";
+                          $username = "root";
+                          $password = "";
+                          $dbName="expotec_db";                          
+                            $conn = mysqli_connect($hostname,$username,$password,$dbName);
+                            if ($conn->connect_error) {
+                                die("Erro na conexão: " . $conn->connect_error);
+                            } 
+                            $turmasele = $_POST['turmass'];
+                            $query = "SELECT * FROM turmas";
+                            $result1 = mysqli_query($conn,$query);
+                            while($row1= mysqli_fetch_array($result1)):;
+                            echo "<option value='".$row1['id'] . "'>".$row1['nome']."</option>";
+                      endwhile;
+                      
+                      $conn->close();
+
+                      
+                      
+                    
+                          ?>
+                    </select><br><br>
                     <center>
                     <button type="submit" name="btn_enviar" class="btn">Enviar</button>
                     </center>

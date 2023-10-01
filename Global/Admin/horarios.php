@@ -113,6 +113,19 @@ if (!$conn) {
     die("Erro na conexão com o banco de dados: " . mysqli_connect_error());
 }
 
+if (isset($_POST["remover_horario"])) {
+    $id_horario_a_remover = $_POST["remover_horario_id"];
+    
+    // Crie a consulta SQL para excluir o horário do banco de dados
+    $sql = "DELETE FROM horarios WHERE id = '$id_horario_a_remover'";
+    
+    if (mysqli_query($conn, $sql)) {
+    } else {
+        echo "Erro ao remover horário: " . mysqli_error($conn);
+    }
+}
+
+
 $sql = "SELECT DISTINCT turmas.nome AS nome_turma FROM horarios
 INNER JOIN turmas ON horarios.turma_id = turmas.id"; // Consulta os nomes das turmas disponíveis
 
@@ -127,21 +140,23 @@ while ($rowTurma = mysqli_fetch_assoc($resultTurmas)) {
     
      // Adicione o título da sala
     
-    $sql = "SELECT
-    horarios.*,
-    dias.dia AS nome_dias,
-    turmas.nome AS nome_turma,
-    horas.hora AS hora_horas,
-    professores.user AS user_professores,
-    materias.nome AS nome_materias
-    FROM horarios
-    INNER JOIN dias ON horarios.dias_id = dias.id
-    INNER JOIN turmas ON horarios.turma_id = turmas.id
-    INNER JOIN horas ON horarios.horas_id = horas.id
-    INNER JOIN professores ON horarios.professores_id = professores.id
-    INNER JOIN materias ON horarios.materia_id = materias.id
-    WHERE turmas.nome = '$nomeTurma'
-    ORDER BY dias.id ASC, horas.hora ASC"; // Consulta os horários para cada turma
+     $sql = "SELECT
+     horarios.id AS id_horario,
+     horarios.*,
+     dias.dia AS nome_dias,
+     turmas.nome AS nome_turma,
+     horas.hora AS hora_horas,
+     professores.user AS user_professores,
+     materias.nome AS nome_materias
+     FROM horarios
+     INNER JOIN dias ON horarios.dias_id = dias.id
+     INNER JOIN turmas ON horarios.turma_id = turmas.id
+     INNER JOIN horas ON horarios.horas_id = horas.id
+     INNER JOIN professores ON horarios.professores_id = professores.id
+     INNER JOIN materias ON horarios.materia_id = materias.id
+     WHERE turmas.nome = '$nomeTurma'
+     ORDER BY dias.id ASC, horas.hora ASC";
+ 
 
     $result = mysqli_query($conn, $sql);
 
@@ -167,23 +182,30 @@ while ($rowTurma = mysqli_fetch_assoc($resultTurmas)) {
         echo '</thead>';
         echo '<tbody>';
         while ($row = mysqli_fetch_assoc($result)) {
+            $id_horario = $row['id_horario'];
             $dia = $row['nome_dias'];
             $materia = $row['nome_materias'];
             $professor = $row['user_professores'];
             $hora = $row['hora_horas'];
-            
+        
             if ($currentDay !== $dia) {
                 if ($currentDay !== null) {
-                    echo '</td></tr>'; 
+                    echo '</td><td><form method="post"><input type="hidden" name="remover_horario_id" value="' . $id_horario . '"><input type="submit" name="remover_horario" value="Remover"></form></td></tr>';
                 }
                 echo "<tr><td><b>$dia</b></td><td>";
                 $currentDay = $dia;
             } else {
-                echo '<br> '; 
+                echo '<br> ';
             }
-
-            echo "<br><b>$hora</b> - $materia ($professor)";//imprime as coisa ai
+        
+            echo "<br><b>$hora</b> - $materia ($professor)";
         }
+        
+        // Adicione um formulário para remover horário no final do loop
+        if ($currentDay !== null) {
+            echo '</td><td><form method="post"><input type="hidden" name="remover_horario_id" value="' . $id_horario . '"><input type="submit" name="remover_horario" value="Remover"></form></td></tr>';
+        }
+        
         
         echo '</td></tr>';
         echo '</tbody>';

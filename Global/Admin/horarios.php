@@ -121,12 +121,32 @@ if (!$conn) {
 if (isset($_POST["remover_horario"])) {
     $id_horario_a_remover = $_POST["remover_horario_id"];
     
-    // Crie a consulta SQL para excluir o horário do banco de dados
-    $sql = "DELETE FROM horarios WHERE id = '$id_horario_a_remover'";
+    // Consulte o dia e a turma deste horário
+    $sql = "SELECT dias.dia AS nome_dias, turmas.nome AS nome_turma
+            FROM horarios
+            INNER JOIN dias ON horarios.dias_id = dias.id
+            INNER JOIN turmas ON horarios.turma_id = turmas.id
+            WHERE horarios.id = '$id_horario_a_remover'";
     
-    if (mysqli_query($conn, $sql)) {
+    $result = mysqli_query($conn, $sql);
+    
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $nomeDia = $row['nome_dias'];
+        $nomeTurma = $row['nome_turma'];
+        
+        // Exclua todos os horários do mesmo dia e turma
+        $sql = "DELETE FROM horarios
+                WHERE turma_id = (SELECT id FROM turmas WHERE nome = '$nomeTurma')
+                AND dias_id = (SELECT id FROM dias WHERE dia = '$nomeDia')";
+        
+        if (mysqli_query($conn, $sql)) {
+            echo "<h3>Todos os horários do dia $nomeDia, da turma $nomeTurma, foram removidos com sucesso.</h3>";
+        } else {
+            echo "Erro ao remover horários do dia $nomeDia para a turma $nomeTurma: " . mysqli_error($conn);
+        }
     } else {
-        echo "Erro ao remover horário: " . mysqli_error($conn);
+        echo "Erro ao consultar o dia e a turma do horário: " . mysqli_error($conn);
     }
 }
 

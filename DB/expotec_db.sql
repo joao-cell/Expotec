@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/09/2023 às 21:02
+-- Tempo de geração: 01/10/2023 às 13:50
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -53,31 +53,6 @@ CREATE TABLE `alunos` (
   `turma_id` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `alunos`
---
-
-INSERT INTO `alunos` (`id`, `user`, `senha`, `turma_id`) VALUES
-(15, 'test', '123', 14),
-(16, 'Bruno Teles de Lira', '123', 13),
-(17, 'JOAO GUSTAVO', 'senha123', 3),
-(18, 'PEDRO VITOR', 'senha456', 4),
-(19, 'JOAO VITOR', 'senha789', 5),
-(20, 'RAFAEL SILVA', 'senhaabc', 6),
-(21, 'PAULO NERES', 'senhaxyz', 7),
-(22, 'BRUNO TELES', 'senha7890', 8),
-(23, 'ROBERTO MIRANDA', 'senhamnop', 9),
-(24, 'SALVADOR DA SILVA', 'senhaqwerty', 10),
-(25, 'ROGERIO NOGUEIRA', 'senhaasdf', 11),
-(26, 'RAFAELA SILVA', 'senhazxcv', 12),
-(27, 'ROBERTA ALVES', 'senha123', 3),
-(28, 'MARIA SILVA', 'senha456', 4),
-(29, 'MARIA DA ESPERANÇA', 'senha789', 5),
-(30, 'CLARA CALVACANTE', 'senhaabc', 6),
-(31, 'VITORIA SILVA', 'senhaxyz', 7),
-(32, 'DIEGO DE MELLO', 'senha7890', 8),
-(33, 'MIGUEL VITOR', 'senhamnop', 9);
-
 -- --------------------------------------------------------
 
 --
@@ -92,14 +67,6 @@ CREATE TABLE `avisos` (
   `titulo` varchar(255) NOT NULL,
   `criador` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `avisos`
---
-
-INSERT INTO `avisos` (`id`, `aviso`, `data_aviso`, `turma_id`, `titulo`, `criador`) VALUES
-(276, '123', '2023-09-30', 14, 'O Aluno joão vitor não sabe front-end', 'JOAO SILVA'),
-(277, '123', '2023-09-30', 14, 'O Aluno joão vitor não sabe front-end', 'JOAO SILVA');
 
 -- --------------------------------------------------------
 
@@ -155,7 +122,7 @@ CREATE TABLE `horarios` (
   `dias_id` int(11) NOT NULL,
   `turma_id` int(11) NOT NULL,
   `horas_id` int(11) NOT NULL,
-  `professores_id` int(11) NOT NULL,
+  `professores_id` int(11) DEFAULT NULL,
   `materia_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -164,10 +131,10 @@ CREATE TABLE `horarios` (
 --
 
 INSERT INTO `horarios` (`id`, `dias_id`, `turma_id`, `horas_id`, `professores_id`, `materia_id`) VALUES
-(58, 1, 3, 1, 13, 1),
-(59, 2, 4, 2, 13, 1),
-(60, 3, 6, 4, 13, 1),
-(61, 1, 14, 2, 13, 1);
+(62, 1, 3, 1, 16, 3),
+(63, 2, 3, 2, NULL, 12),
+(64, 3, 3, 4, NULL, 9),
+(65, 4, 5, 5, 17, 7);
 
 -- --------------------------------------------------------
 
@@ -233,20 +200,8 @@ CREATE TABLE `notas` (
   `alunos_id` int(11) DEFAULT NULL,
   `materias_id` int(11) DEFAULT NULL,
   `bimestres_id` int(11) DEFAULT NULL,
-  `nota` int(11) NOT NULL
+  `nota` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `notas`
---
-
-INSERT INTO `notas` (`id`, `alunos_id`, `materias_id`, `bimestres_id`, `nota`) VALUES
-(13, 15, 12, 1, 10),
-(14, 15, 11, 3, 3),
-(15, 32, 2, 4, 10),
-(16, 15, 12, 4, 5),
-(17, 15, 1, 1, 10),
-(18, 15, 1, 1, 9);
 
 -- --------------------------------------------------------
 
@@ -266,15 +221,12 @@ CREATE TABLE `professores` (
 
 INSERT INTO `professores` (`id`, `user`, `senha`) VALUES
 (13, 'JOAO SILVA', 'senha123'),
-(14, 'MARIA SANTOS', 'senha456'),
-(15, 'CARLOS OLIVEIRA', 'senha789'),
 (16, 'ANA PEREIRA', 'senhaabc'),
 (17, 'PEDRO SOUZA', 'senhaxyz'),
 (18, 'ISABELA ALMEIDA', 'senha7890'),
 (19, 'LUCAS FERREIRA', 'senhamnop'),
 (20, 'MARIANA COSTA', 'senhaqwerty'),
-(21, 'RAFAELA SANTOS', 'senhaasdf'),
-(22, 'PAULO ROCHA', 'senhazxcv');
+(21, 'RAFAELA SANTOS', 'senhaasdf');
 
 -- --------------------------------------------------------
 
@@ -354,8 +306,8 @@ ALTER TABLE `horarios`
   ADD KEY `fk_horarios_dias` (`dias_id`),
   ADD KEY `fk_horarios_turma` (`turma_id`),
   ADD KEY `fk_horarios_horas` (`horas_id`),
-  ADD KEY `fk_horarios_professores` (`professores_id`),
-  ADD KEY `fk_horarios_materia` (`materia_id`);
+  ADD KEY `fk_horarios_materia` (`materia_id`),
+  ADD KEY `fk_horarios_professores` (`professores_id`);
 
 --
 -- Índices de tabela `horas`
@@ -412,7 +364,7 @@ ALTER TABLE `alunos`
 -- AUTO_INCREMENT de tabela `avisos`
 --
 ALTER TABLE `avisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=278;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
 
 --
 -- AUTO_INCREMENT de tabela `bimestres`
@@ -424,7 +376,7 @@ ALTER TABLE `bimestres`
 -- AUTO_INCREMENT de tabela `horarios`
 --
 ALTER TABLE `horarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de tabela `materias`
@@ -436,7 +388,7 @@ ALTER TABLE `materias`
 -- AUTO_INCREMENT de tabela `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `professores`
@@ -473,7 +425,7 @@ ALTER TABLE `horarios`
   ADD CONSTRAINT `fk_horarios_dias` FOREIGN KEY (`dias_id`) REFERENCES `dias` (`id`),
   ADD CONSTRAINT `fk_horarios_horas` FOREIGN KEY (`horas_id`) REFERENCES `horas` (`id`),
   ADD CONSTRAINT `fk_horarios_materia` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id`),
-  ADD CONSTRAINT `fk_horarios_professores` FOREIGN KEY (`professores_id`) REFERENCES `professores` (`id`),
+  ADD CONSTRAINT `fk_horarios_professores` FOREIGN KEY (`professores_id`) REFERENCES `professores` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `fk_horarios_turma` FOREIGN KEY (`turma_id`) REFERENCES `turmas` (`id`);
 
 --

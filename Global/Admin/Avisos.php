@@ -284,8 +284,6 @@ $result = $conn->query($sql);
                 echo "<input type='hidden' name='id' value='$id'>";
                 echo "<button type='button' class='btn'  onclick='confirmarRemocao($id)' style='width: 10%;  background-color: #F72427;'>Excluir</button></form>";
                 echo " ";
-                echo "<button  class='btn' style='width: 10%;  background-color: #1963f7;'>Alterar</button>";
-                echo " ";
                 echo "<hr>";
     }
                 } else {

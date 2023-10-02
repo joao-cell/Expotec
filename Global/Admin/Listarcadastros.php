@@ -108,8 +108,8 @@ if (isset($_POST['btn_enviar'])) {
             </li>
         </ul>
 <div id="logout">
-    <form action="" method="post">
-        <button type="submit" name="sair" class="btn">Sair</button>
+    <form  method="post">
+        <button type="submit" style="color:#fff!important;" name="sair" class="btn">Sair</button>
     </form>
 </div>
 

@@ -116,7 +116,7 @@ if (isset($_POST['sair'])) {
 }
 
 /* Estilo para o formulário */
-form {
+.formCSS {
     margin-top: 20px;
     padding: 20px;
     background-color: #fff;
@@ -207,8 +207,8 @@ select {
             </li>
         </ul>
 <div id="logout">
-    <form action="" method="post">
-        <button type="submit" name="sair" class="btn">Sair</button>
+    <form  method="post">
+        <button type="submit" name="sair" style="margin-bottom:10px;" class="btn">Sair</button>
     </form>
 </div>
 
@@ -219,7 +219,7 @@ select {
         <div class="row">
             <div class="col mt-5">
                 <center>
-                    <form method="POST">
+                    <form method="POST" class="formCSS">
                         <select name="tabel" id="tabel" onchange="toggleTurmaField()">
                             <option>Tipo</option>
                             <option value="administradores">Administradores</option>

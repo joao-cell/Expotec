@@ -107,10 +107,12 @@ if (isset($_POST['btn_enviar'])) {
                 </div>
             </li>
         </ul>
-        <div id="logout">
-            <div><button type="submit" name="sair" class="btn">Sair</button></div>
-        </div>
-    </div>
+<div id="logout">
+    <form action="" method="post">
+        <button type="submit" name="sair" class="btn">Sair</button>
+    </form>
+</div>
+
 </nav>
 <center>
     <h1 style="padding-top: 20px;">Usuários</h1>

@@ -107,9 +107,12 @@ if (isset($_POST['sair'])) {
                 </div>
             </li>
         </ul>
-        <div id="logout">
-            <div><button type="submit" name="sair" class="btn">Sair</button></div>
-        </div>
+<div id="logout">
+    <form action="" method="post">
+        <button type="submit" name="sair" class="btn">Sair</button>
+    </form>
+</div>
+
     </div>
 </nav>
 <center><h1><br>Horários de Todas as Turmas</h1></center>

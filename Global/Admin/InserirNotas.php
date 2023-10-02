@@ -155,20 +155,20 @@ $username = "root";
 $password = "";
 $dbName="expotec_db";
 
-
 session_set_cookie_params(0);
 session_start();
+
 if (empty($_SESSION['user'])) {
     header('Location: ../login/loginProfessores.php'); 
     exit(); 
 }
+
 if (isset($_POST['sair'])) {
-  session_destroy();
-  header('Location: ../../Index.php'); 
+    session_destroy();
+    header('Location: ../../Index.php'); 
+    exit();
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -248,8 +248,10 @@ if (isset($_POST['sair'])) {
             </li>
         </ul>
         <div id="logout">
+          <form action="" method="post">
             <div><button type="submit" name="sair" class="btn">Sair</button></div>
-        </div>
+            </form>
+          </div>
     </div>
 </nav>
     <div class="container">

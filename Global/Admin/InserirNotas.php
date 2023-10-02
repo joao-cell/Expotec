@@ -341,7 +341,7 @@ if (isset($_POST['sair'])) {
                         ?>
                         <br>
                         <br>
-                        <label>Selecione o aluno:<br>
+                        <label>Selecione a Matéria:<br>
                     
                     <select name="materiass" id="materiass" >
                       

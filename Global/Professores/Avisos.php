@@ -239,7 +239,7 @@ $result = $conn->query($sql);
 <div class="conteiner">
     <div class="row">
         <div class="col mt-5">
-            <form action=' ../../php/inserirAviso.php ' method="post">
+            <form action=' ../../php/inserirAvisoProfessor.php ' method="post">
                 <h1>Titulo:<br>
                     
                     <input type="text" name="titulo" placeholder="Escreva o título"><br><br>

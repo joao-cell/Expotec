@@ -219,7 +219,7 @@ if (isset($_POST['sair'])) {
                             Notas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuNotas">
-                            <a class="dropdown-item" href="../professor/VerNotas.php">Ver Notas</a>
+                            <a class="dropdown-item" href="../professores/VerNotas.php">Ver Notas</a>
                             <a class="dropdown-item" href="../professores/InserirNotas.php">Inserir Nota</a>
                         </div>
                     </div>

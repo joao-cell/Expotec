@@ -36,11 +36,11 @@ if (isset($_POST['sair'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         /* Personalize seu CSS aqui */
-        form {
-            background-color: #fff;
-            border: 1px solid #dee2e6;
-            padding: 20px;
+        .container {
+            padding: 1px;
+            padding-bottom: 10px;
             border-radius: 5px;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
         }
         label {
             font-weight: bold;
@@ -77,6 +77,7 @@ if (isset($_POST['sair'])) {
             border-radius: 4px;
             background-color: #244393;
             color: white;
+            
         }
 
         #logout {
@@ -192,13 +193,14 @@ if (isset($_POST['sair'])) {
         $sql = "INSERT INTO horarios (dias_id, turma_id, horas_id, professores_id, materia_id) VALUES ('$dias_id', '$turma_id', '$horas_id', '$professores_id', '$materia_id')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "<h3>Horário inserido com sucesso!</h3>";
+            echo "<h3><center>Horário inserido com sucesso!</h3>";
         } else {
             echo "Erro ao inserir horário: " . $conn->error;
         }
     }
     ?>
-
+<div class="container">
+    <div class="col mt-5">
     <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
         <!-- Campos do formulário -->
         <label for="dias_id">Dia:</label>
@@ -233,5 +235,7 @@ if (isset($_POST['sair'])) {
 
         <input type="submit" value="Inserir Horário">
     </form>
+</div>
+</div>
 </body>
 </html>

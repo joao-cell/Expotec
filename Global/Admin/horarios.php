@@ -152,7 +152,7 @@ if (isset($_POST["remover_horario"])) {
                 AND dias_id = (SELECT id FROM dias WHERE dia = '$nomeDia')";
         
         if (mysqli_query($conn, $sql)) {
-            echo "<h3>Todos os horários do dia $nomeDia, da turma $nomeTurma, foram removidos com sucesso.</h3>";
+            echo "<center><h3>Todos os horários de $nomeDia, da turma $nomeTurma, foram removidos com sucesso.</h3>";
         } else {
             echo "Erro ao remover horários do dia $nomeDia para a turma $nomeTurma: " . mysqli_error($conn);
         }

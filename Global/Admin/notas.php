@@ -34,6 +34,12 @@ if (isset($_POST['sair'])) {
     <link rel="stylesheet" href="../css/bootstrap.min.css" crossorigin="anonymous">
     <title>FortecHub</title>
     <style>
+        .container{
+                  border-style: none ;
+                  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+                  border-radius: 9px;
+                  
+                }
         nav a:hover {
             background-color: #324F9A!important;
             border-radius: 9px;
@@ -115,7 +121,7 @@ if (isset($_POST['sair'])) {
 
 </nav>
 
-<div class="conteiner">
+<div class="container">
     <div class="row">
         <div class="col mt-5">
             <h1>Notas</h1>
@@ -156,7 +162,7 @@ if (isset($_POST['sair'])) {
                       }
                       $currentAluno = $row["aluno"];
                       $turma = obterTurmaDoAluno($currentAluno); // Função para obter a turma do aluno
-          
+                      echo "<hr>";
                       echo "<p><b>Aluno:</b> " . $currentAluno .  "  " . $turma . "</p>";
                       echo "<table border='1' class='table table-hover table-striped table-bordered'>
                               <tr>

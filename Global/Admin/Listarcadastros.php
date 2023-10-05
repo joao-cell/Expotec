@@ -1,3 +1,44 @@
+<style>
+    nav a:hover {
+            background-color: #324F9A!important;
+            border-radius: 9px;
+        }
+    #logout button:hover {
+            background-color: #324f9a;
+            border-radius: 4px;
+        }
+
+        #logout button {
+            border-radius: 4px;
+            background-color: #244393;
+            color: white;
+        }
+
+        #logout {
+            height: 39px;
+        }
+        .col select{
+            color: gray;
+            border-radius: 10px;
+            border-style: none;
+            box-shadow: 0px 1px 4px grey;
+
+
+
+        }
+        .col button{
+            border-radius: 9px;
+            background-color: #244393;
+            color: white;
+
+
+        }
+        .col button:hover{
+            background-color: #192f69;
+            color: white;
+
+        }
+</style>
 <?php
 $hostname = "localhost";
 $username = "root";
@@ -148,7 +189,7 @@ if (isset($_POST['btn_enviar'])) {
         if ($result->num_rows > 0) {
             $tableName = $_POST['tabel'];
             echo "<h1>$tableName</h1>";
-            echo "<table class='table table-hover table-striped table-bordered'>
+            echo "<table class='table  table-striped table-bordered'>
                 <thead class='thead-light'>
                 <tr>";
             foreach ($tableHeaders[$tableName] as $header) {
@@ -165,7 +206,7 @@ if (isset($_POST['btn_enviar'])) {
                     echo "<td>" . $row[$header] . "</td>";
                 }
                 echo "<td>
-                <button type='button' class='btn'  onclick='confirmarRemocao($id, \"$table\")' style='width: 50%;  background-color: #F72427;'>Excluir</button>
+                <button type='button' class='btn'  name='delete' onclick='confirmarRemocao($id, \"$table\")' style='width: 50%;  background-color: #F72427; color: white;'>Excluir</button>
                 </td>
                 </tr>";
             }

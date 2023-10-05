@@ -133,6 +133,7 @@ $result = $conn->query($sql);
         }
         .col button:hover {
               background-color: #192f69;
+              color: white;
         }
         .col input{
                 width: 100%;

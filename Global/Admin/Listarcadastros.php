@@ -2,6 +2,7 @@
     nav a:hover {
             background-color: #324F9A!important;
             border-radius: 9px;
+            
         }
     #logout button:hover {
             background-color: #324f9a;

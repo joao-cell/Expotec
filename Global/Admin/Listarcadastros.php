@@ -135,44 +135,56 @@ if (isset($_POST['btn_enviar'])) {
                 </form>
             </center>
             <div id="table-alunos">
-                <?php
-                if (isset($result)) {
-                    $tableHeaders = [
-                        'administradores' => ['user', 'senha'],
-                        'professores' => ['user', 'senha'],
-                        'alunos' => ['user', 'senha'],
-                        'turmas' => ['nome'],
-                        'materias' => ['nome'],
-                    ];
+    <?php
+    if (isset($result)) {
+        $tableHeaders = [
+            'administradores' => ['user', 'senha'],
+            'professores' => ['user', 'senha'],
+            'alunos' => ['user', 'senha'],
+            'turmas' => ['nome'],
+            'materias' => ['nome'],
+        ];
 
-                    if ($result->num_rows > 0) {
-                        $tableName = $_POST['tabel'];
-                        echo "<h1>$tableName</h1>";
-                        echo "<table class='table table-hover table-striped table-bordered'>
-                            <thead class='thead-light'>
-                            <tr>";
-                        foreach ($tableHeaders[$table] as $header) {
-                            echo "<th>$header</th>";
-                        }
-                        echo "<th>Ação</th>
-                            </tr>
-                            </thead>
-                            <tbody>";
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "<tr>";
-                            foreach ($tableHeaders[$table] as $header) {
-                                echo "<td>" . $row[$header] . "</td>";
-                            }
-                            echo "<td>
-                                <button class='btn btn-danger' id='delete'>Excluir</button>
-                            </td>
-                            </tr>";
-                        }
-                        echo "</tbody></table>";
-                    }
+        if ($result->num_rows > 0) {
+            $tableName = $_POST['tabel'];
+            echo "<h1>$tableName</h1>";
+            echo "<table class='table table-hover table-striped table-bordered'>
+                <thead class='thead-light'>
+                <tr>";
+            foreach ($tableHeaders[$tableName] as $header) {
+                echo "<th>$header</th>";
+            }
+            echo "<th>Ação</th>
+                </tr>
+                </thead>
+                <tbody>";
+            while ($row = mysqli_fetch_array($result)) {
+                $id = $row['id'];
+                echo "<tr>";
+                foreach ($tableHeaders[$tableName] as $header) {
+                    echo "<td>" . $row[$header] . "</td>";
                 }
-                ?>
-            </div>
+                echo "<td>
+                <button type='button' class='btn'  onclick='confirmarRemocao($id, \"$table\")' style='width: 50%;  background-color: #F72427;'>Excluir</button>
+                </td>
+                </tr>";
+            }
+            echo "</tbody></table>";
+        }
+    }
+    ?>
+</div>
+            <script>
+function confirmarRemocao(id, table) {
+    if (confirm("Você realmente deseja remover esta mensagem?")) {
+        // O usuário clicou em "Sim", redirecionar para removerAvisoAdmin.php com os parâmetros
+        window.location.href = "../../php/removeUser.php?id=" + id + "&table=" + table;
+    } else {
+        // O usuário clicou em "Não", não faz nada
+    }
+}
+
+</script>
         </div>
     </div>
 </div>

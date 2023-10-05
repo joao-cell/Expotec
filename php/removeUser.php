@@ -25,7 +25,7 @@ if (isset($_GET['id']) && isset($_GET['table'])) {
 
     if ($stmt_check_related->fetch() && $count > 0) {
         // Existem registros relacionados, você pode excluir os registros relacionados primeiro
-        echo "exclua os horarios desse professor antes de continuar a requisição.";
+        echo "exclua os horarios desse professor antes de continuar a requisição.<br> <a href='../Global/Admin/Listarcadastros.php'>Voltar</a>";
     } else {
         // Não há registros relacionados, você pode excluir o registro principal
         $stmt_check_related->close();
